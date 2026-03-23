@@ -40,7 +40,6 @@
             background-position: center var(--bg-pos-y, top);
             color: var(--text);
             line-height: 1.7;
-	   		height: 100%;
 			overflow-x: hidden;
 			overscroll-behavior: none;
         }
@@ -144,7 +143,6 @@
         .hero p {
             margin: 0;
             font-size: 1.15rem;
-			
         }
 
         .section {
@@ -228,25 +226,25 @@
 		    bottom: 20px;
 		    right: 20px;
 		    z-index: 2000;
-		
+
 		    width: 52px;
 		    height: 52px;
 		    border-radius: 50%;
-		
+
 		    display: flex;
 		    align-items: center;
 		    justify-content: center;
-		
+
 		    font-size: 20px;
 		    padding: 0;
-		
+
 		    background: rgba(0,0,0,0.45);
 		    backdrop-filter: blur(8px);
-		
+
 		    color: white;
 		    border: none;
 		    cursor: pointer;
-		
+
 		    transition: transform 0.2s ease, background 0.2s ease;
 		}
 		
@@ -297,8 +295,6 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: 120px auto;
-			
-			
         }
 
         .gift-card::before {
@@ -539,7 +535,6 @@
 			background: rgba(0,0,0,0.7);
 		}
 
-	
 		/* LOADER BASE */
 		.loader {
 			position: fixed;
@@ -593,14 +588,12 @@
 			font-family: "Great Vibes", cursive;
 			font-size: 3.8rem;
 			letter-spacing: 2px;
-			 color: rgb(
+			color: rgb(
 				calc(255 - (255 - 192) * var(--open-progress, 0)),
 				calc(255 - (255 - 90) * var(--open-progress, 0)),
 				calc(255 - (255 - 62) * var(--open-progress, 0))
 			);
-
 			text-shadow: 0 0 calc(12px * var(--open-progress, 0)) rgba(192, 90, 62, 0.4);
-
 			transition: color 0.1s linear, text-shadow 0.1s linear;
 		}
 		
@@ -634,7 +627,6 @@
                 max-width: 100%;
             }
 
-            
             .page-card {
                 max-width: 94%;
                 margin: 24px auto 32px;
@@ -645,12 +637,9 @@
                 padding: 26px 10px 18px;
             }
 
-            
-
             .hero {
                 padding: 40px 16px;
             }
-            
 
             .section {
                 padding: 34px 16px;
@@ -660,7 +649,6 @@
 				width: 100%;
 				padding: 18px;
 			}
-			
         }
 
         @media (min-width: 1000px) {
@@ -675,9 +663,6 @@
             .section {
                 padding: 50px 80px;
             }
-			
-			
-			
         }
     </style>
 </head>
@@ -689,7 +674,7 @@
 		<div class="loader-center">
 			<img src="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png" alt="Monograma" style="width:200px;">
 			<div class="monograma">A &amp; R</div>
-			<div class= "monograma"> 22 de agosto de 2026</div>
+			<div class="monograma">22 de agosto de 2026</div>
 		</div>
 	</div>
 	
@@ -703,7 +688,7 @@
 
     <div class="page-card">
         <header>
-          	 <img src="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png" style="width:120px; margin-bottom:10px;">
+         	 <img src="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png" style="width:120px; margin-bottom:10px;">
 			<h1>Anna Carolina &amp; Renan Augusto</h1>
             <p>22 de agosto de 2026 às 15h | Casarão Jardins</p>
         </header>
@@ -720,9 +705,6 @@
 					<img id="img2" src="" alt="Fotos do casal">
 					<button class="carousel-btn next">❯</button>
 			</div>
-			
-			
-						
         </div>
 
         <section class="section" id="nossa-historia">
@@ -762,7 +744,6 @@
                 <p>Rodada preliminar de confirmações até dia 15/04/2026.</p>
                 <p>Rodada final aberta a partir de 25/04/2026 até 01/08/2026</p>
                 <p>Clique no botão abaixo para enviar seus dados.</p>
-
                 <button
                     type="button"
                     class="btn"
@@ -1022,25 +1003,26 @@
 
 			// Executa após carregar
 			revealOnScroll();
-		});	
+		});
 		
 		let scrollY = 0;
 
-	function lockBodyScroll() {
-	    scrollY = window.scrollY;
-	
-	    document.body.style.position = "fixed";
-	    document.body.style.top = `-${scrollY}px`;
-	    document.body.style.width = "100%";
-	}
-	
-	function unlockBodyScroll() {
-	    document.body.style.position = "";
-	    document.body.style.top = "";
-	    document.body.style.width = "";
-	
-	    window.scrollTo(0, scrollY);
-	}
+		function lockBodyScroll() {
+		    scrollY = window.scrollY;
+
+		    document.body.style.position = "fixed";
+		    document.body.style.top = `-${scrollY}px`;
+		    document.body.style.width = "100%";
+		}
+		
+		function unlockBodyScroll() {
+		    document.body.style.position = "";
+		    document.body.style.top = "";
+		    document.body.style.width = "";
+
+		    window.scrollTo(0, scrollY);
+		}
+
         function trapFocusIn(container) {
             const focusableSelectors =
                 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -1089,147 +1071,144 @@
 
     <!-- SCRIPT PIX / PRESENTES -->
     <script>
-		
 		document.addEventListener("DOMContentLoaded", function () {
 		
-		const PIX_KEY = "rgutorocha@gmail.com";
+			const PIX_KEY = "rgutorocha@gmail.com";
 
-		const giftButtons    = document.querySelectorAll(".btn-gift");
-		const pixOverlay     = document.getElementById("pix-overlay");
-		const pixBox         = document.getElementById("pix-box");
-		const pixKeySpan     = document.getElementById("pix-key");
-		const pixValueSpan   = document.getElementById("pix-value");
-		const pixDescSpan    = document.getElementById("pix-description");
-		const closePixBtn    = document.getElementById("close-pix");
-		const copyPixKeyBtn  = document.getElementById("copy-pix-key");
-		const copyPixDescBtn = document.getElementById("copy-pix-desc");
-		const feedbackBox    = document.getElementById("pix-feedback");
+			const giftButtons    = document.querySelectorAll(".btn-gift");
+			const pixOverlay     = document.getElementById("pix-overlay");
+			const pixBox         = document.getElementById("pix-box");
+			const pixKeySpan     = document.getElementById("pix-key");
+			const pixValueSpan   = document.getElementById("pix-value");
+			const pixDescSpan    = document.getElementById("pix-description");
+			const closePixBtn    = document.getElementById("close-pix");
+			const copyPixKeyBtn  = document.getElementById("copy-pix-key");
+			const copyPixDescBtn = document.getElementById("copy-pix-desc");
+			const feedbackBox    = document.getElementById("pix-feedback");
 
-		if (pixKeySpan) {
-			pixKeySpan.textContent = PIX_KEY;
-		}
-
-		/* ===== QR CODE ===== */
-		function crc16(str) {
-			let crc = 0xFFFF;
-
-			for (let i = 0; i < str.length; i++) {
-				crc ^= str.charCodeAt(i) << 8;
-				for (let j = 0; j < 8; j++) {
-					crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
-				}
+			if (pixKeySpan) {
+				pixKeySpan.textContent = PIX_KEY;
 			}
 
-			return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
-		}
+			/* ===== QR CODE ===== */
+			function crc16(str) {
+				let crc = 0xFFFF;
 
-		function format(id, value) {
-			return id + value.length.toString().padStart(2, '0') + value;
-		}
-
-		function generatePixPayload(valor) {
-			const chave = "rgutorocha@gmail.com";
-			const nome = "RENAN ROCHA";
-			const cidade = "RIO DE JANEIRO";
-
-			let payload =
-				format("00", "01") +
-				format("26",
-					format("00", "BR.GOV.BCB.PIX") +
-					format("01", chave)
-				) +
-				format("52", "0000") +
-				format("53", "986") +
-				(valor !== "0.00" ? format("54", valor) : "") +
-				format("58", "BR") +
-				format("59", nome.substring(0, 25)) +
-				format("60", cidade.substring(0, 15)) +
-				"6304";
-
-			const crc = crc16(payload);
-			return payload + crc;
-		}
-
-		function generatePixQR(value) {
-			const payload = generatePixPayload(value);
-
-			const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(payload)}`;
-
-			document.getElementById("pix-qr").src = qrUrl;
-		}
-		/*fim scripr qr*/
-		
-		function showFeedback(message) {
-			if (!feedbackBox) return;
-			feedbackBox.textContent = message;
-			feedbackBox.classList.add("visible");
-			setTimeout(() => {
-			    loader.classList.add("open");
-			    animateMonogram(); // inicia sincronizado
-			}, 800));
-		}
-
-		function openPixOverlay() {
-		    pixOverlay.style.display = "flex";
-		    pixOverlay.setAttribute("aria-hidden", "false");
-		    lockBodyScroll();
-		}
-		
-		function closePixOverlay() {
-		    pixOverlay.style.display = "none";
-		    pixOverlay.setAttribute("aria-hidden", "true");
-		    unlockBodyScroll();
-		}
-
-		giftButtons.forEach(btn => {
-			btn.addEventListener("click", () => {
-				const giftName = btn.getAttribute("data-gift");
-				const value = btn.getAttribute("data-value");
-
-				if (value === "livre") {
-					pixValueSpan.textContent = "Você escolhe o valor";
-				} else {
-					pixValueSpan.textContent =
-						`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+				for (let i = 0; i < str.length; i++) {
+					crc ^= str.charCodeAt(i) << 8;
+					for (let j = 0; j < 8; j++) {
+						crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
+					}
 				}
 
-				const description = `Presente: ${giftName} - Renan & Carol`;
-				pixDescSpan.textContent = description;
+				return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
+			}
 
-				generatePixQR(value === "livre" ? "0.00" : value);
+			function format(id, value) {
+				return id + value.length.toString().padStart(2, '0') + value;
+			}
 
-				openPixOverlay();
+			function generatePixPayload(valor) {
+				const chave = "rgutorocha@gmail.com";
+				const nome = "RENAN ROCHA";
+				const cidade = "RIO DE JANEIRO";
 
-				
+				let payload =
+					format("00", "01") +
+					format("26",
+						format("00", "BR.GOV.BCB.PIX") +
+						format("01", chave)
+					) +
+					format("52", "0000") +
+					format("53", "986") +
+					(valor !== "0.00" ? format("54", valor) : "") +
+					format("58", "BR") +
+					format("59", nome.substring(0, 25)) +
+					format("60", cidade.substring(0, 15)) +
+					"6304";
+
+				const crc = crc16(payload);
+				return payload + crc;
+			}
+
+			function generatePixQR(value) {
+				const payload = generatePixPayload(value);
+
+				const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(payload)}`;
+				document.getElementById("pix-qr").src = qrUrl;
+			}
+			/* fim script qr */
+
+			function showFeedback(message) {
+				if (!feedbackBox) return;
+				feedbackBox.textContent = message;
+				feedbackBox.classList.add("visible");
+				setTimeout(() => {
+					feedbackBox.classList.remove("visible");
+				}, 2000);
+			}
+
+			function openPixOverlay() {
+			    pixOverlay.style.display = "flex";
+			    pixOverlay.setAttribute("aria-hidden", "false");
+			    lockBodyScroll();
+			    trapFocusIn(pixOverlay);
+			}
+			
+			function closePixOverlay() {
+			    pixOverlay.style.display = "none";
+			    pixOverlay.setAttribute("aria-hidden", "true");
+			    releaseFocusTrap(pixOverlay);
+			    unlockBodyScroll();
+			}
+
+			giftButtons.forEach(btn => {
+				btn.addEventListener("click", () => {
+					const giftName = btn.getAttribute("data-gift");
+					const value = btn.getAttribute("data-value");
+
+					if (value === "livre") {
+						pixValueSpan.textContent = "Você escolhe o valor";
+					} else {
+						pixValueSpan.textContent =
+							`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+					}
+
+					const description = `Presente: ${giftName} - Renan & Carol`;
+					pixDescSpan.textContent = description;
+
+					generatePixQR(value === "livre" ? "0.00" : value);
+
+					openPixOverlay();
+				});
 			});
+
+			copyPixKeyBtn.addEventListener("click", () => {
+				navigator.clipboard.writeText(PIX_KEY)
+					.then(() => showFeedback("Chave copiada!"));
+			});
+
+			copyPixDescBtn.addEventListener("click", () => {
+				navigator.clipboard.writeText(pixDescSpan.textContent)
+					.then(() => showFeedback("Descrição copiada!"));
+			});
+
+			closePixBtn.addEventListener("click", closePixOverlay);
+
+			pixOverlay.addEventListener("click", (e) => {
+			    if (!pixBox.contains(e.target)) {
+			        closePixOverlay();
+			    }
+			});
+
+			document.addEventListener("keydown", e => {
+				if (e.key === "Escape" && pixOverlay.style.display === "flex") {
+					closePixOverlay();
+				}
+			});
+
 		});
-
-		copyPixKeyBtn.addEventListener("click", () => {
-			navigator.clipboard.writeText(PIX_KEY)
-				.then(() => showFeedback("Chave copiada!"));
-		});
-
-		copyPixDescBtn.addEventListener("click", () => {
-			navigator.clipboard.writeText(pixDescSpan.textContent)
-				.then(() => showFeedback("Descrição copiada!"));
-		});
-
-		closePixBtn.addEventListener("click", closePixOverlay);
-
-		pixOverlay.addEventListener("click", (e) => {
-		    if (!pixBox.contains(e.target)) {
-		        closePixOverlay();
-		    }
-		});
-
-		document.addEventListener("keydown", e => {
-			if (e.key === "Escape" && pixOverlay.style.display === "flex") {
-				closePixOverlay();
-			}
-		});
-
-		});	
-		</script>
+	</script>
 
     <!-- SCRIPT PARALLAX + RSVP -->
     <script>
@@ -1306,340 +1285,316 @@
                 closeRsvp();
             }
         });
-		
-		
     </script>
 	
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
+	// CARROSSEL
+	document.addEventListener("DOMContentLoaded", function () {
 
-			const images = [
-				"https://i.ibb.co/Tq0029t3/download-id-1-At-Wlvc-LDakitho-Q-8-JRsras-Zeecf9-QZ7-export-view.jpg",
-				"https://i.ibb.co/rRrnNtDD/Screenshot-20260322-193345-Fotos-2.jpg",
-				"https://i.ibb.co/sv8xvfNB/Screenshot-20260322-192542-Fotos-2.jpg",
-				"https://i.ibb.co/nMcpYfJb/Screenshot-20260322-192913-Fotos-2.jpg",
-				"https://i.ibb.co/7Byy31z/Screenshot-20260322-192713-Fotos-2.jpg"
-			];
+		const images = [
+			"https://i.ibb.co/Tq0029t3/download-id-1-At-Wlvc-LDakitho-Q-8-JRsras-Zeecf9-QZ7-export-view.jpg",
+			"https://i.ibb.co/rRrnNtDD/Screenshot-20260322-193345-Fotos-2.jpg",
+			"https://i.ibb.co/sv8xvfNB/Screenshot-20260322-192542-Fotos-2.jpg",
+			"https://i.ibb.co/nMcpYfJb/Screenshot-20260322-192913-Fotos-2.jpg",
+			"https://i.ibb.co/7Byy31z/Screenshot-20260322-192713-Fotos-2.jpg"
+		];
 
-			// PRELOAD
-			images.forEach(src => {
-				const img = new Image();
-				img.src = src;
-			});
-
-			const img1 = document.getElementById("img1");
-			const img2 = document.getElementById("img2");
-			const prev = document.querySelector(".carousel-btn.prev");
-			const next = document.querySelector(".carousel-btn.next");
-			const carousel = document.querySelector(".carousel");
-
-			let index = 0;
-			let showingFirst = true;
-			let autoPlay;
-
-			img1.src = images[0];
-			img1.classList.add("active");
-
-			function showImage(i) {
-				const nextSrc = images[i];
-
-				img1.classList.remove("active");
-				img2.classList.remove("active");
-
-				if (showingFirst) {
-					img2.src = nextSrc;
-					img2.classList.add("active");
-				} else {
-					img1.src = nextSrc;
-					img1.classList.add("active");
-				}
-
-				showingFirst = !showingFirst;
-			}
-
-			function nextImage() {
-				index = (index + 1) % images.length;
-				showImage(index);
-			}
-
-			function prevImage() {
-				index = (index - 1 + images.length) % images.length;
-				showImage(index);
-			}
-
-			next.addEventListener("click", nextImage);
-			prev.addEventListener("click", prevImage);
-
-			function startAutoPlay() {
-				if (autoPlay) clearInterval(autoPlay);
-				autoPlay = setInterval(nextImage, 5000);
-			}
-
-			startAutoPlay();
-
-			// PAUSA AO INTERAGIR
-			carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
-			carousel.addEventListener("mouseleave", startAutoPlay);
-
-			// SWIPE
-			let startX = 0;
-			let isDragging = false;
-
-			function start(e) {
-				isDragging = true;
-				startX = e.touches ? e.touches[0].clientX : e.clientX;
-				clearInterval(autoPlay);
-			}
-
-			function move(e) {
-				if (!isDragging) return;
-
-				const currentX = e.touches ? e.touches[0].clientX : e.clientX;
-				const diff = currentX - startX;
-
-				if (Math.abs(diff) > 50) {
-					diff > 0 ? prevImage() : nextImage();
-					isDragging = false;
-				}
-			}
-
-			function end() {
-				isDragging = false;
-				startAutoPlay();
-			}
-
-			carousel.addEventListener("touchstart", start);
-			carousel.addEventListener("touchmove", move, { passive: true });
-			carousel.addEventListener("touchend", end);
-			
-
-			carousel.addEventListener("mousedown", start);
-			carousel.addEventListener("mousemove", move);
-			carousel.addEventListener("mouseup", end);
-			carousel.addEventListener("mouseleave", end);
+		// PRELOAD
+		images.forEach(src => {
+			const img = new Image();
+			img.src = src;
 		});
-		</script>
-		
-		<script>
-		/* Scripts gerais */	
-		 function revealOnScroll() {
-				const sections = document.querySelectorAll(".section");
-				const trigger = window.innerHeight * 0.85;
 
-				sections.forEach(sec => {
-					const top = sec.getBoundingClientRect().top;
-					if (top < trigger) {
-						sec.classList.add("visible");
-					}
-				});
+		const img1 = document.getElementById("img1");
+		const img2 = document.getElementById("img2");
+		const prev = document.querySelector(".carousel-btn.prev");
+		const next = document.querySelector(".carousel-btn.next");
+		const carousel = document.querySelector(".carousel");
+
+		let index = 0;
+		let showingFirst = true;
+		let autoPlay;
+
+		img1.src = images[0];
+		img1.classList.add("active");
+
+		function showImage(i) {
+			const nextSrc = images[i];
+
+			img1.classList.remove("active");
+			img2.classList.remove("active");
+
+			if (showingFirst) {
+				img2.src = nextSrc;
+				img2.classList.add("active");
+			} else {
+				img1.src = nextSrc;
+				img1.classList.add("active");
 			}
 
-			window.addEventListener("scroll", revealOnScroll);
+			showingFirst = !showingFirst;
+		}
 
-			function updateCountdown() {
-				const weddingDate = new Date("2026-08-22T15:00:00");
-				const now = new Date();
-				let diff = weddingDate - now;
+		function nextImage() {
+			index = (index + 1) % images.length;
+			showImage(index);
+		}
 
-				if (diff <= 0) {
-					document.getElementById("countdown").textContent =
-						"Chegou o grande dia! 💍";
-					return;
-				}
+		function prevImage() {
+			index = (index - 1 + images.length) % images.length;
+			showImage(index);
+		}
 
-				const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
-				diff       -= days * (1000 * 60 * 60 * 24);
+		next.addEventListener("click", nextImage);
+		prev.addEventListener("click", prevImage);
 
-				const hours = Math.floor(diff / (1000 * 60 * 60));
-				diff       -= hours * (1000 * 60 * 60);
+		function startAutoPlay() {
+			if (autoPlay) clearInterval(autoPlay);
+			autoPlay = setInterval(nextImage, 5000);
+		}
 
-				const mins  = Math.floor(diff / (1000 * 60));
-				diff       -= mins * (1000 * 60);
+		startAutoPlay();
 
-				const secs  = Math.floor(diff / 1000);
+		// PAUSA AO INTERAGIR
+		carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
+		carousel.addEventListener("mouseleave", startAutoPlay);
 
-				const pad = n => n.toString().padStart(2, "0");
+		// SWIPE
+		let startX = 0;
+		let isDragging = false;
 
-				document.getElementById("countdown").textContent =
-					`Faltam ${days} dias, ${pad(hours)} horas, ${pad(mins)} minutos e ${pad(secs)} segundos para o grande dia 💍`;
+		function start(e) {
+			isDragging = true;
+			startX = e.touches ? e.touches[0].clientX : e.clientX;
+			clearInterval(autoPlay);
+		}
+
+		function move(e) {
+			if (!isDragging) return;
+
+			const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+			const diff = currentX - startX;
+
+			if (Math.abs(diff) > 50) {
+				diff > 0 ? prevImage() : nextImage();
+				isDragging = false;
 			}
+		}
 
-			window.addEventListener("load", () => {
-				const loader    = document.getElementById("loader");
-				const music     = document.getElementById("music");
-				const musicBtn  = document.getElementById("music-btn");
+		function end() {
+			isDragging = false;
+			startAutoPlay();
+		}
 
-				// animação do loader
-				setTimeout(() => {
-					loader.classList.add("open");
-					
-				}, 800);
+		carousel.addEventListener("touchstart", start);
+		carousel.addEventListener("touchmove", move, { passive: true });
+		carousel.addEventListener("touchend", end);
 
-				setTimeout(() => {
-					loader.style.opacity = "0";
-					loader.style.transition = "opacity 0.8s ease";
-				}, 2000);
-
-				setTimeout(() => {
-					loader.style.display = "none";
-				}, 2800);
-
-				// countdown inicial
-				updateCountdown();
-				setInterval(updateCountdown, 1000);
-
-				// estado da música
-				let isPlaying = false;
-
-				function tryPlay() {
-					const playPromise = music.play();
-					if (playPromise !== undefined) {
-						playPromise
-							.then(() => {
-								isPlaying = true;
-								music.volume = 0.2;
-								musicBtn.textContent = "Pausar música";
-							})
-							.catch(() => {
-								// se falhar, aguarda primeira interação explícita
-							});
-					}
-				}
-
-				// tenta tocar no primeiro clique em qualquer lugar (para liberar autoplay)
-				document.body.addEventListener("click", () => {
-					if (!isPlaying) {
-						tryPlay();
-					}
-				}, { once: true });
-
-				// botão de toggle
-				musicBtn.addEventListener("click", (e) => {
-				    e.stopPropagation();
-				
-				    if (!isPlaying) {
-				        tryPlay();
-				        musicBtn.textContent = "🔊";
-				    } else {
-				        music.pause();
-				        isPlaying = false;
-				        musicBtn.textContent = "🎵";
-				    }
-				});
-			
-			const loader = document.getElementById("loader");
-
-			let progress = 0;
-
-			function animateMonogram() {
-				progress += 0.02; // velocidade da mudança
-
-				if (progress > 1) progress = 1;
-
-				loader.style.setProperty("--open-progress", progress);
-
-				if (progress < 1) {
-					requestAnimationFrame(animateMonogram);
-				}
-			}
-
-			function openCurtains() {
-			    const left = document.querySelector(".curtain-left");
-			    const right = document.querySelector(".curtain-right");
-			
-			    left.classList.add("open");
-			    right.classList.add("open");
-			}
-			
-			setTimeout(() => {
-				loader.classList.add("open");
-				openCurtains();
-				animateMonogram(); // inicia sincronizado
-			}, 800);
-		</script>
+		carousel.addEventListener("mousedown", start);
+		carousel.addEventListener("mousemove", move);
+		carousel.addEventListener("mouseup", end);
+		carousel.addEventListener("mouseleave", end);
+	});
+	</script>
 	
-		<script>
-		/*particulas*/
-		const canvas = document.getElementById("particles");
-		const ctx = canvas.getContext("2d");
-		const isMobile = window.innerWidth < 600;
+	<script>
+	// LOADER, CONTAGEM, MÚSICA
+	function updateCountdown() {
+		const weddingDate = new Date("2026-08-22T15:00:00");
+		const now = new Date();
+		let diff = weddingDate - now;
 
-		let particles = [];
-
-		function resizeCanvas() {
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
+		if (diff <= 0) {
+			document.getElementById("countdown").textContent =
+				"Chegou o grande dia! 💍";
+			return;
 		}
 
-		window.addEventListener("resize", resizeCanvas);
-		resizeCanvas();
+		const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+		diff       -= days * (1000 * 60 * 60 * 24);
 
-		function createParticles() {
-			particles = [];
+		const hours = Math.floor(diff / (1000 * 60 * 60));
+		diff       -= hours * (1000 * 60 * 60);
 
-			for (let i = 0; i < (isMobile ? 30 : 80); i++) {
-				particles.push({
-					x: Math.random() * canvas.width,
-					y: Math.random() * canvas.height,
+		const mins  = Math.floor(diff / (1000 * 60));
+		diff       -= mins * (1000 * 60);
 
-					size: Math.random() * 2 + 0.5,
+		const secs  = Math.floor(diff / 1000);
 
-					speedY: Math.random() * 0.4 + 0.1,
-					speedX: (Math.random() - 0.5) * 0.3,
+		const pad = n => n.toString().padStart(2, "0");
 
-					opacity: Math.random() * 0.5 + 0.2,
+		document.getElementById("countdown").textContent =
+			`Faltam ${days} dias, ${pad(hours)} horas, ${pad(mins)} minutos e ${pad(secs)} segundos para o grande dia 💍`;
+	}
 
-					glow: Math.random() * 15 + 5, // brilho
-					twinkle: Math.random() * 0.02 + 0.01 // piscar suave
-				});
+	window.addEventListener("load", () => {
+		const loader    = document.getElementById("loader");
+		const music     = document.getElementById("music");
+		const musicBtn  = document.getElementById("music-btn");
+
+		// animação do loader
+		setTimeout(() => {
+			loader.classList.add("open");
+		}, 800);
+
+		setTimeout(() => {
+			loader.style.opacity = "0";
+			loader.style.transition = "opacity 0.8s ease";
+		}, 2000);
+
+		setTimeout(() => {
+			loader.style.display = "none";
+		}, 2800);
+
+		// countdown inicial
+		updateCountdown();
+		setInterval(updateCountdown, 1000);
+
+		// estado da música
+		let isPlaying = false;
+
+		function tryPlay() {
+			const playPromise = music.play();
+			if (playPromise !== undefined) {
+				playPromise
+					.then(() => {
+						isPlaying = true;
+						music.volume = 0.2;
+						musicBtn.textContent = "🔊";
+					})
+					.catch(() => {
+						// se falhar, aguarda primeira interação explícita
+					});
 			}
 		}
 
-		function drawParticles() {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		// tenta tocar no primeiro clique em qualquer lugar (para liberar autoplay)
+		document.body.addEventListener("click", () => {
+			if (!isPlaying) {
+				tryPlay();
+			}
+		}, { once: true });
 
-			particles.forEach(p => {
-				// efeito brilho pulsante
-				p.opacity += p.twinkle;
-				if (p.opacity >= 0.8 || p.opacity <= 0.2) {
-					p.twinkle *= -1;
-				}
+		// botão de toggle
+		musicBtn.addEventListener("click", (e) => {
+		    e.stopPropagation();
+		
+		    if (!isPlaying) {
+		        tryPlay();
+		    } else {
+		        music.pause();
+		        isPlaying = false;
+		        musicBtn.textContent = "🎵";
+		    }
+		});
 
-				// glow (efeito premium)
-				const gradient = ctx.createRadialGradient(
-					p.x, p.y, 0,
-					p.x, p.y, p.glow
-				);
+		let progress = 0;
 
-				gradient.addColorStop(0, `rgba(255, 223, 120, ${p.opacity})`);
-				gradient.addColorStop(0.5, `rgba(212, 175, 55, ${p.opacity * 0.6})`);
-				gradient.addColorStop(1, `rgba(212, 175, 55, 0)`);
+		function animateMonogram() {
+			progress += 0.02; // velocidade da mudança
 
-				ctx.beginPath();
-				ctx.fillStyle = gradient;
-				ctx.arc(p.x, p.y, p.glow, 0, Math.PI * 2);
-				ctx.fill();
+			if (progress > 1) progress = 1;
 
-				// movimento mais orgânico
-				p.y += p.speedY;
-				p.x += p.speedX;
+			loader.style.setProperty("--open-progress", progress);
 
-				// leve oscilação
-				p.x += Math.sin(p.y * 0.01) * 0.2;
-
-				// reset suave
-				if (p.y > canvas.height) {
-					p.y = 0;
-					p.x = Math.random() * canvas.width;
-				}
-			});
-
-			requestAnimationFrame(drawParticles);
+			if (progress < 1) {
+				requestAnimationFrame(animateMonogram);
+			}
 		}
 
-		createParticles();
-		drawParticles();
-		</script>	
+		function openCurtains() {
+		    const left = document.querySelector(".curtain.left");
+		    const right = document.querySelector(".curtain.right");
+
+		    if (!left || !right) return;
+
+		    left.classList.add("open");
+		    right.classList.add("open");
+		}
 		
+		setTimeout(() => {
+			loader.classList.add("open");
+			openCurtains();
+			animateMonogram();
+		}, 800);
+	});
+	</script>
+	
+	<script>
+	/* partículas */
+	const canvas = document.getElementById("particles");
+	const ctx = canvas.getContext("2d");
+	const isMobile = window.innerWidth < 600;
+
+	let particles = [];
+
+	function resizeCanvas() {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
+
+	window.addEventListener("resize", resizeCanvas);
+	resizeCanvas();
+
+	function createParticles() {
+		particles = [];
+
+		for (let i = 0; i < (isMobile ? 20 : 80); i++) {
+			particles.push({
+				x: Math.random() * canvas.width,
+				y: Math.random() * canvas.height,
+
+				size: Math.random() * 2 + 0.5,
+
+				speedY: Math.random() * 0.4 + 0.1,
+				speedX: (Math.random() - 0.5) * 0.3,
+				opacity: Math.random() * 0.5 + 0.2,
+
+				glow: Math.random() * 15 + 5,
+				twinkle: Math.random() * 0.02 + 0.01
+			});
+		}
+	}
+
+	function drawParticles() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		particles.forEach(p => {
+			p.opacity += p.twinkle;
+			if (p.opacity >= 0.8 || p.opacity <= 0.2) {
+				p.twinkle *= -1;
+			}
+
+			const gradient = ctx.createRadialGradient(
+				p.x, p.y, 0,
+				p.x, p.y, p.glow
+			);
+
+			gradient.addColorStop(0, `rgba(255, 223, 120, ${p.opacity})`);
+			gradient.addColorStop(0.5, `rgba(212, 175, 55, ${p.opacity * 0.6})`);
+			gradient.addColorStop(1, `rgba(212, 175, 55, 0)`);
+
+			ctx.beginPath();
+			ctx.fillStyle = gradient;
+			ctx.arc(p.x, p.y, p.glow, 0, Math.PI * 2);
+			ctx.fill();
+
+			p.y += p.speedY;
+			p.x += p.speedX;
+
+			p.x += Math.sin(p.y * 0.01) * 0.2;
+
+			if (p.y > canvas.height) {
+				p.y = 0;
+				p.x = Math.random() * canvas.width;
+			}
+		});
+
+		requestAnimationFrame(drawParticles);
+	}
+
+	createParticles();
+	drawParticles();
+	</script>	
 </body>
 </html>
