@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#C05A3E">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carol &amp; Renan</title>
@@ -29,6 +31,10 @@
         * {
             box-sizing: border-box;
         }
+		
+		html {
+			scroll-behavior: smooth;
+		}
 
         body {
             font-family: "EB Garamond", "Times New Roman", serif;
@@ -40,6 +46,11 @@
             background-position: center var(--bg-pos-y, top);
             color: var(--text);
             line-height: 1.7;
+			display: flex;
+			justify-content: center;   
+			align-items: center;       
+
+    		min-height: 100vh; 
         }
 
         body::before {
@@ -55,6 +66,10 @@
             animation: bg-move 30s ease-in-out infinite;
             pointer-events: none;
         }
+		
+		body.modal-open {
+			overflow: hidden;
+		}
 
         @keyframes bg-move {
             0% {
@@ -79,7 +94,7 @@
 
         .page-card {
             max-width: 900px;
-            margin: 40px auto 60px;
+            margin: 40px auto;
             background-color: rgba(247, 227, 206, 0.80);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
             border-radius: 18px;
@@ -185,6 +200,7 @@
         .btn {
             display: inline-block;
             background-color: rgba(192, 90, 62, 0.95);
+			backdrop-filter: blur(4px);
             color: white;
             padding: 16px 34px;
             text-decoration: none;
@@ -272,7 +288,7 @@
 			inset: 0;
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: 250;
+			background-size: 150px;
 			opacity: 0;
 			transition: opacity 0.3s ease;
 			background-image: var(--hover-img);
@@ -288,7 +304,8 @@
 		}
 
 		.gift-card:hover::after {
-			opacity: 0.5; 
+			opacity: 0.5;
+			transform: scale(1.1);
 		}
 
         .gift-card > * {
@@ -329,6 +346,13 @@
             font-size: 0.90rem;
             margin-top: 10px;
         }
+		
+		.viewport-center {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
         .pix-feedback {
             margin-top: 10px;
@@ -380,40 +404,53 @@
             outline-offset: 2px;
         }
 
-        /* Overlay RSVP fixo no centro da tela */
-        .rsvp-overlay {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.45);
-            z-index: 1000;
-            padding: 20px;
-        }
+       .rsvp-overlay,
+		.pix-overlay {
+			position: fixed;
+			inset: 0;
+			width: 100vw;
+    		height: 100vh;
+
+			display: flex; 
+			align-items: center;
+			justify-content: center;
+
+			background-color: rgba(0, 0, 0, 0.45);
+
+			z-index: 1000;
+
+			opacity: 0;
+			pointer-events: none;
+			visibility: hidden;
+
+			transition: opacity 0.3s ease;
+		}
 
         .rsvp-modal-content {
             background-color: rgba(247, 227, 206, 0.98);
             border-radius: 16px;
             padding: 24px 20px 24px;
-            max-width: 540px;
+            max-width: clamp(320px, 80vw, 700px);
             width: 100%;
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
-            max-height: 90vh;
-            overflow-y: auto;
+            margin: 0;
+			max-height: 90vh;
+			overflow-y: auto;
+			transition: transform 0.3s ease;
+			transform: scale(1);
         }
 
-        /* Overlay PIX fixo no centro da tela */
-        .pix-overlay {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.45);
-            z-index: 1200;
-            padding: 20px;
-        }
+        		
+		.rsvp-overlay.active,
+		.pix-overlay.active {
+			opacity: 1;
+			pointer-events: all;
+			visibility: visible;
+			transform: scale(1);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 
         .pix-box {
             margin: 0;
@@ -423,10 +460,13 @@
             border: none;
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
             text-align: left;
-            max-width: 520px;
+            max-width: clamp(320px, 80vw, 700px);
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
+			transform: scale(1);
+    		transition: transform 0.3s ease;
+			transform-origin: center center;
         }
 		
 		/* BASE (funciona em qualquer tela) */
@@ -575,10 +615,52 @@
 			pointer-events: none;
 		}
 		
-        @media (max-width: 600px) {
+		#music-btn {
+		    position: fixed;
+		    bottom: 20px;
+		    right: 20px;
+		    z-index: 2000;
+
+		    width: 52px;
+		    height: 52px;
+		    border-radius: 50%;
+
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+
+		    font-size: 20px;
+		    padding: 0;
+
+		    background: rgba(0,0,0,0.45);
+		    backdrop-filter: blur(8px);
+
+		    color: white;
+		    border: none;
+		    cursor: pointer;
+
+		    transition: transform 0.2s ease, background 0.2s ease;
+		}
+		
+		#music-btn:hover {
+		    transform: scale(1.08);
+		    background: rgba(0,0,0,0.65);
+		}
+		
+       @media (min-height: 800px) {
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+			}
+		}
+		
+		@media (max-width: 600px) {
             .rsvp-modal-content,
             .pix-box {
                 max-width: 100%;
+				transition: transform 0.3s ease;
             }
 
             
@@ -646,9 +728,7 @@
 		<source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
 	</audio>
 
-	<button id="music-btn" class="btn btn-small" style="backdrop-filter: blur(10px); background: rgba(0,0,0,0.4);">
-		Música
-	</button>
+	<button id="music-btn">🎵</button>
 
     <div class="page-card">
         <header>
@@ -721,58 +801,6 @@
                 </button>
             </div>
         </section>
-
-        <!-- OVERLAY RSVP flutuante -->
-        <div id="rsvp-overlay" class="rsvp-overlay" aria-hidden="true">
-            <div class="rsvp-modal-content" role="dialog" aria-modal="true">
-                <h2>Confirme sua presença</h2>
-                <p>Rodada preliminar da confirmação.</p>
-
-                <form
-                    id="rsvp-form"
-                    class="rsvp-form"
-                    action="https://docs.google.com/forms/d/e/1FAIpQLSfx_dWDAWtCPOBqjjE7MCxHfyiqz_EriBlg1amzmyvdX3pA0A/formResponse"
-                    method="POST"
-                    target="_blank"
-                >
-                    <div class="rsvp-field">
-                        <label for="nome">Nome completo</label>
-                        <input type="text" id="nome" name="entry.1367140038" required>
-                    </div>
-
-                    <div class="rsvp-field">
-                        <label for="presenca">Você vai ao casamento?</label>
-                        <select id="presenca" name="entry.1549432255" required>
-                            <option value="">Selecione</option>
-                            <option value="Sim, com certeza!">Sim, com certeza!</option>
-                            <option value="Ainda não sei">Ainda não sei</option>
-                            <option value="Infelizmente não poderei ir">Infelizmente não poderei ir</option>
-                        </select>
-                    </div>
-
-                    <div
-                        style="
-                            display:flex;
-                            justify-content:space-between;
-                            gap:12px;
-                            margin-top:18px;
-                        "
-                    >
-                        <button
-                            type="button"
-                            id="rsvp-close"
-                            class="btn btn-small"
-                            style="flex:1; background-color:rgba(143,67,46,0.85);"
-                        >
-                            Fechar
-                        </button>
-                        <button type="submit" class="btn" style="flex:1;">
-                            Enviar RSVP
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
         <section class="section" id="lista-presentes">
             <div class="container">
@@ -882,15 +910,21 @@
                         </button>
                     </div>
                 </div>
+			</div>	
+        </section>
+		
 
-                <!-- OVERLAY FLUTUANTE DA PIX BOX -->
+        <footer>
+            <p>
+                Nosso amor é como a jornada de um treinador Pokémon: cheio de desafios, descobertas e evoluções,
+                mas, acima de tudo, feito para ser vivido lado a lado, sem nunca desistir um do outro. 2026 - Carol &amp; Renan
+            </p>
+        </footer>
+    </div>
+	
+	 <!-- OVERLAY FLUTUANTE DA PIX BOX -->
                 <div id="pix-overlay" class="pix-overlay" aria-hidden="true">
-                    <div
-                        id="pix-box"
-                        class="pix-box"
-                        role="dialog"
-                        aria-modal="true"
-                    >
+                    <div id="pix-box" class="pix-box" role="dialog" aria-modal="true">
                         <h3>Dados para presente via Pix</h3>
                         <p>
                             <strong>Chave Pix:</strong>
@@ -938,16 +972,57 @@
                         </button>
                     </div>
                 </div>
-            </div>
-        </section>
+		<!-- OVERLAY RSVP flutuante -->
+        <div id="rsvp-overlay" class="rsvp-overlay" aria-hidden="true">
+            <div class="rsvp-modal-content" role="dialog" aria-modal="true">
+                <h2>Confirme sua presença</h2>
+                <p>Rodada preliminar da confirmação.</p>
 
-        <footer>
-            <p>
-                Nosso amor é como a jornada de um treinador Pokémon: cheio de desafios, descobertas e evoluções,
-                mas, acima de tudo, feito para ser vivido lado a lado, sem nunca desistir um do outro. 2026 - Carol &amp; Renan
-            </p>
-        </footer>
-    </div>
+                <form
+                    id="rsvp-form"
+                    class="rsvp-form"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSfx_dWDAWtCPOBqjjE7MCxHfyiqz_EriBlg1amzmyvdX3pA0A/formResponse"
+                    method="POST"
+                    target="_blank" rel="noopener noreferrer"
+                >
+                    <div class="rsvp-field">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="entry.1367140038" required>
+                    </div>
+
+                    <div class="rsvp-field">
+                        <label for="presenca">Você vai ao casamento?</label>
+                        <select id="presenca" name="entry.1549432255" required>
+                            <option value="">Selecione</option>
+                            <option value="Sim, com certeza!">Sim, com certeza!</option>
+                            <option value="Ainda não sei">Ainda não sei</option>
+                            <option value="Infelizmente não poderei ir">Infelizmente não poderei ir</option>
+                        </select>
+                    </div>
+
+                    <div
+                        style="
+                            display:flex;
+                            justify-content:space-between;
+                            gap:12px;
+                            margin-top:18px;
+                        "
+                    >
+                        <button
+                            type="button"
+                            id="rsvp-close"
+                            class="btn btn-small"
+                            style="flex:1; background-color:rgba(143,67,46,0.85);"
+                        >
+                            Fechar
+                        </button>
+                        <button type="submit" class="btn" style="flex:1;">
+                            Enviar RSVP
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
     <!-- FUNÇÕES AUXILIARES: scroll + focus trap -->
     <script>
@@ -1029,6 +1104,8 @@
 
     <!-- SCRIPT PIX / PRESENTES -->
     <script>
+		document.addEventListener("DOMContentLoaded", () => {
+		
 		const PIX_KEY = "rgutorocha@gmail.com";
 
 		const giftButtons    = document.querySelectorAll(".btn-gift");
@@ -1106,15 +1183,26 @@
 		}
 
 		function openPixOverlay() {
-			pixOverlay.style.display = "flex";
+			if (!pixOverlay) return;
+
+			pixOverlay.classList.add("active");
 			pixOverlay.setAttribute("aria-hidden", "false");
-			document.body.style.overflow = "hidden";
+
+			lockBodyScroll();
+
+			// força reflow + animação correta
+			requestAnimationFrame(() => {
+				pixBox.style.transform = "scale(1)";
+			});
 		}
 
 		function closePixOverlay() {
-			pixOverlay.style.display = "none";
+			pixOverlay.classList.remove("active");
 			pixOverlay.setAttribute("aria-hidden", "true");
-			document.body.style.overflow = "";
+
+			unlockBodyScroll();
+
+			pixBox.style.transform = "scale(0.95)";
 		}
 
 		giftButtons.forEach(btn => {
@@ -1157,9 +1245,11 @@
 		});
 
 		document.addEventListener("keydown", e => {
-			if (e.key === "Escape" && pixOverlay.style.display === "flex") {
+			if (e.key === "Escape" && pixOverlay.classList.contains("active")) {
 				closePixOverlay();
 			}
+		});
+			
 		});
 		</script>
 
@@ -1190,7 +1280,7 @@
 
         function openRsvp() {
             if (!rsvpOverlay) return;
-            rsvpOverlay.style.display = "flex";
+			rsvpOverlay.classList.add("active");
             rsvpOverlay.setAttribute("aria-hidden", "false");
             lockBodyScroll();
             trapFocusIn(rsvpOverlay);
@@ -1205,7 +1295,7 @@
 
         function closeRsvp() {
             if (!rsvpOverlay) return;
-            rsvpOverlay.style.display = "none";
+			rsvpOverlay.classList.remove("active");
             rsvpOverlay.setAttribute("aria-hidden", "true");
             releaseFocusTrap(rsvpOverlay);
             unlockBodyScroll();
@@ -1229,10 +1319,10 @@
 
         document.addEventListener("keydown", e => {
             if (
-                e.key === "Escape" &&
-                rsvpOverlay &&
-                rsvpOverlay.style.display === "flex"
-            ) {
+				e.key === "Escape" &&
+				rsvpOverlay &&
+				rsvpOverlay.classList.contains("active")
+			) {
                 closeRsvp();
             }
         });
@@ -1351,20 +1441,6 @@
 		
 		<script>
 		/* Scripts gerais */	
-		 function revealOnScroll() {
-				const sections = document.querySelectorAll(".section");
-				const trigger = window.innerHeight * 0.85;
-
-				sections.forEach(sec => {
-					const top = sec.getBoundingClientRect().top;
-					if (top < trigger) {
-						sec.classList.add("visible");
-					}
-				});
-			}
-
-			window.addEventListener("scroll", revealOnScroll);
-
 			function updateCountdown() {
 				const weddingDate = new Date("2026-08-22T15:00:00");
 				const now = new Date();
@@ -1401,6 +1477,7 @@
 				// animação do loader
 				setTimeout(() => {
 					loader.classList.add("open");
+					animateMonogram();
 				}, 800);
 
 				setTimeout(() => {
@@ -1420,13 +1497,13 @@
 				let isPlaying = false;
 
 				function tryPlay() {
+					music.volume = 0.2;
 					const playPromise = music.play();
 					if (playPromise !== undefined) {
 						playPromise
 							.then(() => {
 								isPlaying = true;
-								music.volume = 0.2;
-								musicBtn.textContent = "Pausar música";
+								musicBtn.textContent = "🔊";
 							})
 							.catch(() => {
 								// se falhar, aguarda primeira interação explícita
@@ -1449,7 +1526,7 @@
 					} else {
 						music.pause();
 						isPlaying = false;
-						musicBtn.textContent = "Música";
+						musicBtn.textContent = "🎵";
 					}
 				});
 			});
@@ -1470,16 +1547,14 @@
 				}
 			}
 			
-			setTimeout(() => {
-				loader.classList.add("open");
-				animateMonogram(); // inicia sincronizado
-			}, 800);
+			
 		</script>
 	
 		<script>
 		/*particulas*/
 		const canvas = document.getElementById("particles");
 		const ctx = canvas.getContext("2d");
+		const PARTICLE_COUNT = window.innerWidth < 600 ? 40 : 80;
 
 		let particles = [];
 
