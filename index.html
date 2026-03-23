@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carol &amp; Renan</title>
+
+    <!-- Fonte caligráfica + serif clássica -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+	
+	<link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png">
+	<link rel="apple-touch-icon" href="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png">
+	
+	<style>
+        :root {
+            --terracotta: #C05A3E;
+            --rust:        #8F432E;
+            --cream:       #F7E3CE;
+            --sage:        #A0A088;
+            --text:        #3A2B25;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "EB Garamond", "Times New Roman", serif;
+            margin: 0;
+            font-size:  clamp(16px, 1.2vw, 20px);
+            background:
+                url(https://i.ibb.co/vxdC7q02/Modelo-convite-fundo-corrigido.png)
+                center top / cover no-repeat;
+            background-position: center var(--bg-pos-y, top);
+            color: var(--text);
+            line-height: 1.7;
+	    height: 100%;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(
+                to bottom,
+                rgba(247,227,206,0.25),
+                rgba(247,227,206,0.55)
+            );
+            animation: bg-move 30s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes bg-move {
+            0% {
+                transform: translate3d(0, 0, 0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate3d(0, -10px, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(0, 10px, 0);
+                opacity: 0.85;
+            }
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .page-card {
+            max-width: 900px;
+            margin: 40px auto 60px;
+            background-color: rgba(247, 227, 206, 0.80);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+            border-radius: 18px;
+            overflow: hidden;
+            border: none;
+            backdrop-filter: blur(2px);
+    	    -webkit-backdrop-filter: blur(2px);
+        }
+
+        header {
+            background-color: rgba(247, 227, 206, 0.70);
+            padding: 32px 10px 26px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Great Vibes", cursive;
+            color: var(--terracotta);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 14px 0 0;
+            font-size: 1.15rem;
+            letter-spacing: 0.6px;
+        }
+
+        h2 {
+            color: var(--rust);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+        }
+
+        .hero {
+            background: linear-gradient(
+                to bottom,
+                rgba(192, 90, 62, 0.12),
+                rgba(160, 160, 136, 0.10)
+            );
+            color: var(--rust);
+            padding: 46px 18px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            color: var(--rust);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 14px;
+            text-transform: none;
+            letter-spacing: 1px;
+            font-family: "Great Vibes", cursive;
+        }
+
+        .hero p {
+            margin: 0;
+            font-size: 1.15rem;
+			
+        }
+
+        .section {
+            padding: 42px 18px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.70);
+       		opacity: 0;
+			transform: translateY(20px);
+			transition: all 0.8s ease;
+		}
+
+		.section.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+        .section#nossa-historia {
+            background-color: rgba(255, 255, 255, 0.75);
+			text-align: justify;
+        }
+
+        .section#detalhes {
+            background-color: rgba(255, 252, 248, 0.78);
+        }
+
+        .section#rsvp {
+            background-color: rgba(253, 245, 236, 0.82);
+        }
+
+        .section#lista-presentes {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .section h2 {
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        .section p {
+            margin: 10px 0;
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: rgba(192, 90, 62, 0.95);
+            color: white;
+            padding: 16px 34px;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            margin-top: 20px;
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 14px rgba(192, 90, 62, 0.30);
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+		
+		.btn:active {
+			transform: scale(0.97);
+		}
+
+        .btn:hover {
+            background-color: rgba(143, 67, 46, 0.98);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(192, 90, 62, 0.38);
+        }
+
+        .btn:focus-visible,
+        .btn-gift:focus-visible {
+            outline: 2px solid rgba(192, 90, 62, 0.7);
+            outline-offset: 2px;
+        }
+
+	#music-btn {
+	    position: fixed;
+	    bottom: 20px;
+	    right: 20px;
+	    z-index: 2000;
+	}
+
+        footer {
+            background-color: rgba(58, 43, 37, 0.92);
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.95rem;
+        }
+
+        .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .gift-card {
+            background-color: rgba(255, 255, 255, 0.76);
+            border-radius: 14px;
+            padding: 18px 16px 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 210px;
+            border: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 120px auto;
+			
+			
+        }
+
+        .gift-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(247, 227, 206, 0.70);
+            pointer-events: none;
+			background-image: url('https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png');
+			background-size: 50%;
+			background-position: center;
+			background-repeat: no-repeat;
+			transition: opacity 0.3s ease;
+			opacity: 0.4;
+        }
+		
+		.gift-card::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 250;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			background-image: var(--hover-img);
+		}
+
+        .gift-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+        }
+		
+		.gift-card:hover::before {
+			opacity: 0;
+		}
+
+		.gift-card:hover::after {
+			opacity: 0.5; 
+		}
+
+        .gift-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gift-card h3 {
+            margin: 0 0 6px;
+            font-size: 1.1rem;
+            color: var(--rust);
+        }
+
+        .gift-value {
+            margin: 0 0 6px;
+            font-weight: 600;
+            color: var(--terracotta);
+        }
+
+        .gift-desc {
+            margin: 0 0 12px;
+            font-size: 0.98rem;
+        }
+
+        .btn-gift {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            margin-top: 12px;
+            align-self: center;
+            flex-shrink: 0;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn-small {
+            padding: 10px 18px;
+            font-size: 0.90rem;
+            margin-top: 10px;
+        }
+
+        .pix-feedback {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--rust);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .pix-feedback.visible {
+            opacity: 1;
+        }
+
+        .rsvp-form {
+            max-width: 520px;
+            margin: 24px auto 0;
+            text-align: left;
+        }
+
+        .rsvp-field {
+            margin-bottom: 16px;
+        }
+
+        .rsvp-field label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            letter-spacing: 0.4px;
+            color: var(--rust);
+        }
+
+        .rsvp-field input,
+        .rsvp-field select,
+        .rsvp-field textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(192, 90, 62, 0.35);
+            font-family: "EB Garamond", "Times New Roman", serif;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--text);
+        }
+
+        .rsvp-field input:focus,
+        .rsvp-field select:focus,
+        .rsvp-field textarea:focus {
+            outline: 2px solid rgba(192, 90, 62, 0.6);
+            outline-offset: 2px;
+        }
+
+        /* Overlay RSVP fixo no centro da tela */
+        .rsvp-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .rsvp-modal-content {
+            background-color: rgba(247, 227, 206, 0.98);
+            border-radius: 16px;
+            padding: 24px 20px 24px;
+            max-width: 540px;
+            width: 100%;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        /* Overlay PIX fixo no centro da tela */
+        .pix-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 1200;
+            padding: 20px;
+	    max-height: 85vh;
+        }
+
+        .pix-box {
+            margin: 0;
+            padding: 18px 16px 20px;
+            border-radius: 14px;
+            background-color: rgba(247, 227, 206, 0.98);
+            border: none;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+		
+		/* BASE (funciona em qualquer tela) */
+		.carousel {
+			position: relative;
+			width: 100%;
+			max-width: 420px;
+			aspect-ratio: 3 / 4;
+			margin: 30px auto;
+			border-radius: 16px;
+			overflow: hidden;
+			box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+		}
+
+		.carousel img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			position: absolute;
+			inset: 0;
+
+			opacity: 0;
+			transition: opacity 0.8s ease-in-out, transform 6s ease;
+			z-index: 1;
+		}
+
+		.carousel img.active {
+			opacity: 1;
+			transform: scale(1.05);
+		}
+		
+		.carousel-btn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(0,0,0,0.4);
+			color: white;
+			border: none;
+			font-size: 22px;
+			padding: 8px 12px;
+			cursor: pointer;
+			border-radius: 50%;
+		}
+
+		.carousel-btn.prev {
+			z-index: 10;
+			left: 10px;
+		}
+
+		.carousel-btn.next {
+			z-index: 10;
+			right: 10px;
+		}
+
+		.carousel-btn:hover {
+			background: rgba(0,0,0,0.7);
+		}
+
+	
+		/* LOADER BASE */
+		.loader {
+			position: fixed;
+			inset: 0;
+			z-index: 9999;
+			background: #F7E3CE;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		/* CORTINAS */
+		.curtain {
+			position: absolute;
+			top: 0;
+			width: 50%;
+			height: 100%;
+			background: linear-gradient(135deg, #C05A3E, #8F432E);
+			z-index: 2;
+			transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+		}
+
+		.curtain.left {
+			left: 0;
+		}
+
+		.curtain.right {
+			right: 0;
+		}
+
+		/* estado aberto */
+		.loader.open .left {
+			transform: translateX(-100%);
+		}
+
+		.loader.open .right {
+			transform: translateX(100%);
+		}
+
+		/* centro */
+		.loader-center {
+			position: relative;
+			z-index: 3;
+			text-align: center;
+			color: #fff;
+			animation: fadeIn 1.5s ease;
+		}
+
+		.monograma {
+			font-family: "Great Vibes", cursive;
+			font-size: 3.8rem;
+			letter-spacing: 2px;
+			 color: rgb(
+				calc(255 - (255 - 192) * var(--open-progress, 0)),
+				calc(255 - (255 - 90) * var(--open-progress, 0)),
+				calc(255 - (255 - 62) * var(--open-progress, 0))
+			);
+
+			text-shadow: 0 0 calc(12px * var(--open-progress, 0)) rgba(192, 90, 62, 0.4);
+
+			transition: color 0.1s linear, text-shadow 0.1s linear;
+		}
+		
+		.loader.open .monograma {
+			color: #C05A3E; 
+			text-shadow: 0 0 12px rgba(192, 90, 62, 0.4);
+		}
+
+		.loader-center p {
+			font-family: "EB Garamond", serif;
+			font-size: 1.2rem;
+			opacity: 0.9;
+		}
+
+		/* animação */
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(20px);}
+			to { opacity: 1; transform: translateY(0);}
+		}
+		
+		#particles {
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+		}
+		
+        @media (max-width: 600px) {
+            .rsvp-modal-content,
+            .pix-box {
+                max-width: 100%;
+            }
+
+            
+            .page-card {
+                max-width: 94%;
+                margin: 24px auto 32px;
+                border-radius: 14px;
+            }
+
+            header {
+                padding: 26px 10px 18px;
+            }
+
+            
+
+            .hero {
+                padding: 40px 16px;
+            }
+            
+
+            .section {
+                padding: 34px 16px;
+            }
+			
+			.btn {
+				width: 100%;
+				padding: 18px;
+			}
+			
+        }
+
+        @media (min-width: 1000px) {
+            .page-card {
+                max-width: 960px;
+            }
+
+            .hero {
+                padding: 56px 80px;
+            }
+
+            .section {
+                padding: 50px 80px;
+            }
+			
+			
+			
+        }
+    </style>
+</head>
+<body>
+	<div id="loader" class="loader">
+		<div class="curtain left"></div>
+		<div class="curtain right"></div>
+
+		<div class="loader-center">
+			<img src="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png" alt="Monograma" style="width:200px;">
+			<div class="monograma">A &amp; R</div>
+			<p>22 de agosto de 2026</p>
+		</div>
+	</div>
+	
+	<canvas id="particles"></canvas>
+
+	<audio id="music" loop>
+		<source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+	</audio>
+
+	<button id="music-btn" class="btn btn-small" style="backdrop-filter: blur(10px); background: rgba(0,0,0,0.4);">
+		Música
+	</button>
+
+    <div class="page-card">
+        <header>
+          	 <img src="https://i.ibb.co/20Cfp6qp/Chat-GPT-Image-23-de-mar-de-2026-03-54-09.png" style="width:120px; margin-bottom:10px;">
+			<h1>Anna Carolina &amp; Renan Augusto</h1>
+            <p>22 de agosto de 2026 às 15h | Casarão Jardins</p>
+        </header>
+
+        <div class="hero">
+            <h2>Vamos casar!</h2>
+            <p>Nossa jornada está só começando, e queremos celebrar este momento com você.</p>
+			
+			<p id="countdown"></p>
+			
+			<div class="carousel">
+					<button class="carousel-btn prev">❮</button>
+					<img id="img1" class="active" src="" alt="Fotos do casal">
+					<img id="img2" src="" alt="Fotos do casal">
+					<button class="carousel-btn next">❯</button>
+			</div>
+			
+			
+						
+        </div>
+
+        <section class="section" id="nossa-historia">
+            <div class="container">
+                <h2>Nossa jornada</h2>
+                <p>
+                    Antes da gente se encontrar, cada um caminhava pela própria rota, capturando experiências e aprendendo com as batalhas do dia a dia.
+                    Quando nossas histórias se cruzaram, foi como aquele momento em que o treinador encontra o primeiro parceiro:
+                    de repente, tudo faz mais sentido, o mapa ganha cor e a viagem deixa de ser solitária.
+                </p>
+                <p>
+                    Como em Pokémon, a nossa jornada não é sobre chegar rápido ao destino, mas sobre quem caminha ao nosso lado.
+                    A cada desafio que apareceu, descobrimos novos tipos de força: a força de pedir desculpas, de perdoar, de recomeçar
+                    e de cuidar do outro mesmo quando é mais fácil cuidar só de si. Em vez de fugir das batalhas, aprendemos a formar um time.
+                </p>
+                <p>
+                    Já encaramos dias de sol, de tempestade, rotas longas e até alguns “ginásios” difíceis, mas em todos eles escolhemos continuar juntos.
+                    É isso que queremos celebrar neste dia: não um amor perfeito, e sim um amor que evolui, que ganha experiência
+                    e que sabe que os momentos simples – como dividir uma refeição, um sorriso cansado ou um abraço no fim do dia – são nossos verdadeiros tesouros.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="detalhes">
+            <div class="container">
+                <h2>O grande dia</h2>
+                <p>Cerimônia às 15h, seguida de recepção.</p>
+                <p>Endereço: Rua Guilhermina, 251 – Piedade, Rio de Janeiro/RJ</p>
+                <p style="font-size: 1rem; opacity: 0.85;">Obs.: O casamento será no Rio de Janeiro (RJ).</p>
+            </div>
+        </section>
+
+        <!-- Seção RSVP fixa na página -->
+        <section class="section" id="rsvp">
+            <div class="container">
+                <h2>Confirme sua presença</h2>
+                <p>Rodada preliminar de confirmações até dia 15/04/2026.</p>
+                <p>Rodada final aberta a partir de 25/04/2026 até 01/08/2026</p>
+                <p>Clique no botão abaixo para enviar seus dados.</p>
+
+                <button
+                    type="button"
+                    class="btn"
+                    id="rsvp-main-btn"
+                >
+                    Confirmar presença
+                </button>
+            </div>
+        </section>
+
+        <!-- OVERLAY RSVP flutuante -->
+        <div id="rsvp-overlay" class="rsvp-overlay" aria-hidden="true">
+            <div class="rsvp-modal-content" role="dialog" aria-modal="true">
+                <h2>Confirme sua presença</h2>
+                <p>Rodada preliminar da confirmação.</p>
+
+                <form
+                    id="rsvp-form"
+                    class="rsvp-form"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSfx_dWDAWtCPOBqjjE7MCxHfyiqz_EriBlg1amzmyvdX3pA0A/formResponse"
+                    method="POST"
+                    target="_blank"
+                >
+                    <div class="rsvp-field">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="entry.1367140038" required>
+                    </div>
+
+                    <div class="rsvp-field">
+                        <label for="presenca">Você vai ao casamento?</label>
+                        <select id="presenca" name="entry.1549432255" required>
+                            <option value="">Selecione</option>
+                            <option value="Sim, com certeza!">Sim, com certeza!</option>
+                            <option value="Ainda não sei">Ainda não sei</option>
+                            <option value="Infelizmente não poderei ir">Infelizmente não poderei ir</option>
+                        </select>
+                    </div>
+
+                    <div
+                        style="
+                            display:flex;
+                            justify-content:space-between;
+                            gap:12px;
+                            margin-top:18px;
+                        "
+                    >
+                        <button
+                            type="button"
+                            id="rsvp-close"
+                            class="btn btn-small"
+                            style="flex:1; background-color:rgba(143,67,46,0.85);"
+                        >
+                            Fechar
+                        </button>
+                        <button type="submit" class="btn" style="flex:1;">
+                            Enviar RSVP
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section class="section" id="lista-presentes">
+            <div class="container">
+                <h2>Lista de presentes</h2>
+                <p>Se preferir nos presentear em dinheiro, estaremos recebendo no dia, você pode escolher um dos itens abaixo e enviar o valor via Pix.</p>
+
+                <div class="gift-grid">
+                    <div
+                        class="gift-card"
+                        data-img="https://img.icons8.com/color/96/wedding-gift.png"
+                    >
+                        <h3>Valor livre</h3>
+                        <p class="gift-value">Você escolhe o valor</p>
+                        <p class="gift-desc">Contribua com qualquer valor que desejar.</p>
+                        <button
+                            type="button"
+                            class="btn btn-gift"
+                            data-gift="Presente com valor livre"
+                            data-value="livre"
+                        >
+                            Presentear via Pix
+                        </button>
+                    </div>
+
+                    <div
+                        class="gift-card"
+                        data-img="https://img.icons8.com/color/96/beach.png"
+                    >
+                        <h3>Cota da lua de mel</h3>
+                        <p class="gift-value">R$ 1.000,00</p>
+                        <p class="gift-desc">Ajude na nossa viagem de lua de mel.</p>
+                        <button
+                            type="button"
+                            class="btn btn-gift"
+                            data-gift="Cota da lua de mel"
+                            data-value="1000.00"
+                        >
+                            Presentear via Pix
+                        </button>
+                    </div>
+
+                    <div
+                        class="gift-card"
+                        data-img="https://img.icons8.com/?size=100&id=g5UgXhfNJIeQ&format=png&color=000000"
+                    >
+                        <h3>Jantar especial</h3>
+                        <p class="gift-value">R$ 500,00</p>
+                        <p class="gift-desc">Para comemorarmos nossa nova fase com um jantar a dois.</p>
+                        <button
+                            type="button"
+                            class="btn btn-gift"
+                            data-gift="Jantar especial"
+                            data-value="500.00"
+                        >
+                            Presentear via Pix
+                        </button>
+                    </div>
+
+                    <div
+                        class="gift-card"
+                        data-img="https://img.icons8.com/color/96/bed.png"
+                    >
+                        <h3>Enxoval da casa</h3>
+                        <p class="gift-value">R$ 250,00</p>
+                        <p class="gift-desc">Contribua com itens para nossa casa nova.</p>
+                        <button
+                            type="button"
+                            class="btn btn-gift"
+                            data-gift="Enxoval da casa"
+                            data-value="250.00"
+                        >
+                            Presentear via Pix
+                        </button>
+                    </div>
+
+                    <div
+                        class="gift-card"
+                        data-img="https://img.icons8.com/color/96/champagne.png"
+                    >
+                        <h3>Conta do bar&nbsp;</h3>
+                        <p class="gift-value">R$150,00</p>
+                        <p class="gift-desc">Um brinde especial pra casar já de ressaca.</p>
+                        <button
+                            type="button"
+                            class="btn btn-gift"
+                            data-gift="Brinde na festa"
+                            data-value="150.00"
+                        >
+                            Presentear via Pix
+                        </button>
+                    </div>
+
+                    <div
+                        class="gift-card"
+                        data-img="https://img.icons8.com/color/96/gift.png"
+                    >
+                        <h3>Cota especial</h3>
+                        <p class="gift-value">R$ 50,00</p>
+                        <p class="gift-desc">Uma cota especial para nos ajudar a montar nosso lar.</p>
+                        <button
+                            type="button"
+                            class="btn btn-gift"
+                            data-gift="Cota especial"
+                            data-value="50.00"
+                        >
+                            Presentear via Pix
+                        </button>
+                    </div>
+                </div>
+
+                <!-- OVERLAY FLUTUANTE DA PIX BOX -->
+                <div id="pix-overlay" class="pix-overlay" aria-hidden="true">
+                    <div
+                        id="pix-box"
+                        class="pix-box"
+                        role="dialog"
+                        aria-modal="true"
+                    >
+                        <h3>Dados para presente via Pix</h3>
+                        <p>
+                            <strong>Chave Pix:</strong>
+                            <span id="pix-key">rgutorocha@gmail.com</span>
+							<img id="pix-qr" style="width:220px; margin-top:12px; border-radius:8px;" />
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-small"
+                            id="copy-pix-key"
+                        >
+                            Copiar chave Pix
+                        </button>
+
+                        <p style="margin-top: 12px;">
+                            <strong>Valor sugerido:</strong>
+                            <span id="pix-value"></span>
+                        </p>
+
+                        <p style="margin-top: 12px;">
+                            <strong>Descrição para colocar no Pix:</strong>
+                        </p>
+                        <p id="pix-description"></p>
+                        <button
+                            type="button"
+                            class="btn btn-small"
+                            id="copy-pix-desc"
+                        >
+                            Copiar descrição
+                        </button>
+
+                        <div
+                            id="pix-feedback"
+                            class="pix-feedback"
+                            aria-live="polite"
+                        ></div>
+
+                        <button
+                            type="button"
+                            class="btn btn-small"
+                            id="close-pix"
+                            style="margin-top: 16px;"
+                        >
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                Nosso amor é como a jornada de um treinador Pokémon: cheio de desafios, descobertas e evoluções,
+                mas, acima de tudo, feito para ser vivido lado a lado, sem nunca desistir um do outro. 2026 - Carol &amp; Renan
+            </p>
+        </footer>
+    </div>
+
+    <!-- FUNÇÕES AUXILIARES: scroll + focus trap -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+			const sections = document.querySelectorAll(".section");
+
+			function revealOnScroll() {
+				const trigger = window.innerHeight * 0.85;
+
+				sections.forEach(sec => {
+					const top = sec.getBoundingClientRect().top;
+
+					if (top < trigger) {
+						sec.classList.add("visible");
+					}
+				});
+			}
+
+			window.addEventListener("scroll", revealOnScroll);
+
+			// Executa após carregar
+			revealOnScroll();
+		});	
+		
+		let scrollY = 0;
+
+	function lockBodyScroll() {
+	    scrollY = window.scrollY;
+	
+	    document.body.style.position = "fixed";
+	    document.body.style.top = `-${scrollY}px`;
+	    document.body.style.left = "0";
+	    document.body.style.right = "0";
+	    document.body.style.width = "100%";
+	}
+	
+	function unlockBodyScroll() {
+	    document.body.style.position = "";
+	    document.body.style.top = "";
+	    document.body.style.left = "";
+	    document.body.style.right = "";
+	    document.body.style.width = "";
+
+	    window.scrollTo(0, scrollY);
+	}
+        function trapFocusIn(container) {
+            const focusableSelectors =
+                'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+            const focusable = Array.from(container.querySelectorAll(focusableSelectors))
+                .filter(el => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
+
+            if (focusable.length === 0) return;
+
+            const first = focusable[0];
+            const last  = focusable[focusable.length - 1];
+
+            function handleKeydown(e) {
+                if (e.key !== "Tab") return;
+
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
+
+            container._trapHandler = handleKeydown;
+            container.addEventListener("keydown", handleKeydown);
+        }
+
+        function releaseFocusTrap(container) {
+            if (container && container._trapHandler) {
+                container.removeEventListener("keydown", container._trapHandler);
+                delete container._trapHandler;
+            }
+        }
+		
+		document.querySelectorAll(".gift-card").forEach(card => {
+			const img = card.getAttribute("data-img");
+			if (img) {
+				card.style.setProperty('--hover-img', `url(${img})`);
+			}
+		});
+    </script>
+
+    <!-- SCRIPT PIX / PRESENTES -->
+    <script>
+		const PIX_KEY = "rgutorocha@gmail.com";
+
+		const giftButtons    = document.querySelectorAll(".btn-gift");
+		const pixOverlay     = document.getElementById("pix-overlay");
+		const pixBox         = document.getElementById("pix-box");
+		const pixKeySpan     = document.getElementById("pix-key");
+		const pixValueSpan   = document.getElementById("pix-value");
+		const pixDescSpan    = document.getElementById("pix-description");
+		const closePixBtn    = document.getElementById("close-pix");
+		const copyPixKeyBtn  = document.getElementById("copy-pix-key");
+		const copyPixDescBtn = document.getElementById("copy-pix-desc");
+		const feedbackBox    = document.getElementById("pix-feedback");
+
+		if (pixKeySpan) {
+			pixKeySpan.textContent = PIX_KEY;
+		}
+
+		/* ===== QR CODE ===== */
+		function crc16(str) {
+			let crc = 0xFFFF;
+
+			for (let i = 0; i < str.length; i++) {
+				crc ^= str.charCodeAt(i) << 8;
+				for (let j = 0; j < 8; j++) {
+					crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
+				}
+			}
+
+			return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
+		}
+
+		function format(id, value) {
+			return id + value.length.toString().padStart(2, '0') + value;
+		}
+
+		function generatePixPayload(valor) {
+			const chave = "rgutorocha@gmail.com";
+			const nome = "RENAN ROCHA";
+			const cidade = "RIO DE JANEIRO";
+
+			let payload =
+				format("00", "01") +
+				format("26",
+					format("00", "BR.GOV.BCB.PIX") +
+					format("01", chave)
+				) +
+				format("52", "0000") +
+				format("53", "986") +
+				(valor !== "0.00" ? format("54", valor) : "") +
+				format("58", "BR") +
+				format("59", nome.substring(0, 25)) +
+				format("60", cidade.substring(0, 15)) +
+				"6304";
+
+			const crc = crc16(payload);
+			return payload + crc;
+		}
+
+		function generatePixQR(value) {
+			const payload = generatePixPayload(value);
+
+			const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(payload)}`;
+
+			document.getElementById("pix-qr").src = qrUrl;
+		}
+		/*fim scripr qr*/
+		
+		function showFeedback(message) {
+			if (!feedbackBox) return;
+			feedbackBox.textContent = message;
+			feedbackBox.classList.add("visible");
+			setTimeout(() => {
+				feedbackBox.classList.remove("visible");
+			}, 3000);
+		}
+
+		function openPixOverlay() {
+		    pixOverlay.style.display = "flex";
+		    pixOverlay.setAttribute("aria-hidden", "false");
+		    lockBodyScroll();
+		}
+		
+		function closePixOverlay() {
+		    pixOverlay.style.display = "none";
+		    pixOverlay.setAttribute("aria-hidden", "true");
+		    unlockBodyScroll();
+		}
+
+		giftButtons.forEach(btn => {
+			btn.addEventListener("click", () => {
+				const giftName = btn.getAttribute("data-gift");
+				const value = btn.getAttribute("data-value");
+
+				if (value === "livre") {
+					pixValueSpan.textContent = "Você escolhe o valor";
+				} else {
+					pixValueSpan.textContent =
+						`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+				}
+
+				const description = `Presente: ${giftName} - Renan & Carol`;
+				pixDescSpan.textContent = description;
+
+				generatePixQR(value === "livre" ? "0.00" : value);
+
+				openPixOverlay();
+
+				
+			});
+		});
+
+		copyPixKeyBtn.addEventListener("click", () => {
+			navigator.clipboard.writeText(PIX_KEY)
+				.then(() => showFeedback("Chave copiada!"));
+		});
+
+		copyPixDescBtn.addEventListener("click", () => {
+			navigator.clipboard.writeText(pixDescSpan.textContent)
+				.then(() => showFeedback("Descrição copiada!"));
+		});
+
+		closePixBtn.addEventListener("click", closePixOverlay);
+
+		pixOverlay.addEventListener("click", e => {
+			if (e.target === pixOverlay) closePixOverlay();
+		});
+
+		document.addEventListener("keydown", e => {
+			if (e.key === "Escape" && pixOverlay.style.display === "flex") {
+				closePixOverlay();
+			}
+		});
+		</script>
+
+    <!-- SCRIPT PARALLAX + RSVP -->
+    <script>
+        let ticking = false;
+
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollTop = window.scrollY;
+                    const docHeight =
+                        document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+                    document.body.style.setProperty(
+                        "--bg-pos-y",
+                        `${scrollPercent * 100}%`
+                    );
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        const rsvpOverlay  = document.getElementById("rsvp-overlay");
+        const rsvpMainBtn  = document.getElementById("rsvp-main-btn");
+        const rsvpCloseBtn = document.getElementById("rsvp-close");
+
+        function openRsvp() {
+            if (!rsvpOverlay) return;
+            rsvpOverlay.style.display = "flex";
+            rsvpOverlay.setAttribute("aria-hidden", "false");
+            lockBodyScroll();
+            trapFocusIn(rsvpOverlay);
+
+            const firstField = rsvpOverlay.querySelector(
+                "input, select, textarea, button, a"
+            );
+            if (firstField) {
+                firstField.focus();
+            }
+        }
+
+        function closeRsvp() {
+            if (!rsvpOverlay) return;
+            rsvpOverlay.style.display = "none";
+            rsvpOverlay.setAttribute("aria-hidden", "true");
+            releaseFocusTrap(rsvpOverlay);
+            unlockBodyScroll();
+        }
+
+        if (rsvpMainBtn) {
+            rsvpMainBtn.addEventListener("click", openRsvp);
+        }
+
+        if (rsvpCloseBtn) {
+            rsvpCloseBtn.addEventListener("click", closeRsvp);
+        }
+
+        if (rsvpOverlay) {
+            rsvpOverlay.addEventListener("click", e => {
+                if (e.target === rsvpOverlay) {
+                    closeRsvp();
+                }
+            });
+        }
+
+        document.addEventListener("keydown", e => {
+            if (
+                e.key === "Escape" &&
+                rsvpOverlay &&
+                rsvpOverlay.style.display === "flex"
+            ) {
+                closeRsvp();
+            }
+        });
+		
+		
+    </script>
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+
+			const images = [
+				"https://i.ibb.co/Tq0029t3/download-id-1-At-Wlvc-LDakitho-Q-8-JRsras-Zeecf9-QZ7-export-view.jpg",
+				"https://i.ibb.co/rRrnNtDD/Screenshot-20260322-193345-Fotos-2.jpg",
+				"https://i.ibb.co/sv8xvfNB/Screenshot-20260322-192542-Fotos-2.jpg",
+				"https://i.ibb.co/nMcpYfJb/Screenshot-20260322-192913-Fotos-2.jpg",
+				"https://i.ibb.co/7Byy31z/Screenshot-20260322-192713-Fotos-2.jpg"
+			];
+
+			// PRELOAD
+			images.forEach(src => {
+				const img = new Image();
+				img.src = src;
+			});
+
+			const img1 = document.getElementById("img1");
+			const img2 = document.getElementById("img2");
+			const prev = document.querySelector(".carousel-btn.prev");
+			const next = document.querySelector(".carousel-btn.next");
+			const carousel = document.querySelector(".carousel");
+
+			let index = 0;
+			let showingFirst = true;
+			let autoPlay;
+
+			img1.src = images[0];
+			img1.classList.add("active");
+
+			function showImage(i) {
+				const nextSrc = images[i];
+
+				img1.classList.remove("active");
+				img2.classList.remove("active");
+
+				if (showingFirst) {
+					img2.src = nextSrc;
+					img2.classList.add("active");
+				} else {
+					img1.src = nextSrc;
+					img1.classList.add("active");
+				}
+
+				showingFirst = !showingFirst;
+			}
+
+			function nextImage() {
+				index = (index + 1) % images.length;
+				showImage(index);
+			}
+
+			function prevImage() {
+				index = (index - 1 + images.length) % images.length;
+				showImage(index);
+			}
+
+			next.addEventListener("click", nextImage);
+			prev.addEventListener("click", prevImage);
+
+			function startAutoPlay() {
+				if (autoPlay) clearInterval(autoPlay);
+				autoPlay = setInterval(nextImage, 5000);
+			}
+
+			startAutoPlay();
+
+			// PAUSA AO INTERAGIR
+			carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
+			carousel.addEventListener("mouseleave", startAutoPlay);
+
+			// SWIPE
+			let startX = 0;
+			let isDragging = false;
+
+			function start(e) {
+				isDragging = true;
+				startX = e.touches ? e.touches[0].clientX : e.clientX;
+				clearInterval(autoPlay);
+			}
+
+			function move(e) {
+				if (!isDragging) return;
+
+				const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+				const diff = currentX - startX;
+
+				if (Math.abs(diff) > 50) {
+					diff > 0 ? prevImage() : nextImage();
+					isDragging = false;
+				}
+			}
+
+			function end() {
+				isDragging = false;
+				startAutoPlay();
+			}
+
+			carousel.addEventListener("touchstart", start);
+			carousel.addEventListener("touchmove", move);
+			carousel.addEventListener("touchend", end);
+			carousel.addEventListener("touchstart", () => clearInterval			(autoPlay));
+			carousel.addEventListener("touchend", startAutoPlay);
+			carousel.addEventListener("touchmove", move, { passive: true });
+			carousel.style.touchAction = "pan-y";
+			
+
+			carousel.addEventListener("mousedown", start);
+			carousel.addEventListener("mousemove", move);
+			carousel.addEventListener("mouseup", end);
+			carousel.addEventListener("mouseleave", end);
+		});
+		</script>
+		
+		<script>
+		/* Scripts gerais */	
+		 function revealOnScroll() {
+				const sections = document.querySelectorAll(".section");
+				const trigger = window.innerHeight * 0.85;
+
+				sections.forEach(sec => {
+					const top = sec.getBoundingClientRect().top;
+					if (top < trigger) {
+						sec.classList.add("visible");
+					}
+				});
+			}
+
+			window.addEventListener("scroll", revealOnScroll);
+
+			function updateCountdown() {
+				const weddingDate = new Date("2026-08-22T15:00:00");
+				const now = new Date();
+				let diff = weddingDate - now;
+
+				if (diff <= 0) {
+					document.getElementById("countdown").textContent =
+						"Chegou o grande dia! 💍";
+					return;
+				}
+
+				const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+				diff       -= days * (1000 * 60 * 60 * 24);
+
+				const hours = Math.floor(diff / (1000 * 60 * 60));
+				diff       -= hours * (1000 * 60 * 60);
+
+				const mins  = Math.floor(diff / (1000 * 60));
+				diff       -= mins * (1000 * 60);
+
+				const secs  = Math.floor(diff / 1000);
+
+				const pad = n => n.toString().padStart(2, "0");
+
+				document.getElementById("countdown").textContent =
+					`Faltam ${days} dias, ${pad(hours)} horas, ${pad(mins)} minutos e ${pad(secs)} segundos para o grande dia 💍`;
+			}
+
+			window.addEventListener("load", () => {
+				const loader    = document.getElementById("loader");
+				const music     = document.getElementById("music");
+				const musicBtn  = document.getElementById("music-btn");
+
+				// animação do loader
+				setTimeout(() => {
+					loader.classList.add("open");
+				}, 800);
+
+				setTimeout(() => {
+					loader.style.opacity = "0";
+					loader.style.transition = "opacity 0.8s ease";
+				}, 2000);
+
+				setTimeout(() => {
+					loader.style.display = "none";
+				}, 2800);
+
+				// countdown inicial
+				updateCountdown();
+				setInterval(updateCountdown, 1000);
+
+				// estado da música
+				let isPlaying = false;
+
+				function tryPlay() {
+					const playPromise = music.play();
+					if (playPromise !== undefined) {
+						playPromise
+							.then(() => {
+								isPlaying = true;
+								music.volume = 0.2;
+								musicBtn.textContent = "Pausar música";
+							})
+							.catch(() => {
+								// se falhar, aguarda primeira interação explícita
+							});
+					}
+				}
+
+				// tenta tocar no primeiro clique em qualquer lugar (para liberar autoplay)
+				document.body.addEventListener("click", () => {
+					if (!isPlaying) {
+						tryPlay();
+					}
+				}, { once: true });
+
+				// botão de toggle
+				musicBtn.addEventListener("click", (e) => {
+					e.stopPropagation(); // não conflitar com o listener do body
+					if (!isPlaying) {
+						tryPlay();
+					} else {
+						music.pause();
+						isPlaying = false;
+						musicBtn.textContent = "Música";
+					}
+				});
+			});
+			
+			const loader = document.getElementById("loader");
+
+			let progress = 0;
+
+			function animateMonogram() {
+				progress += 0.02; // velocidade da mudança
+
+				if (progress > 1) progress = 1;
+
+				loader.style.setProperty("--open-progress", progress);
+
+				if (progress < 1) {
+					requestAnimationFrame(animateMonogram);
+				}
+			}
+			
+			setTimeout(() => {
+				loader.classList.add("open");
+				animateMonogram(); // inicia sincronizado
+			}, 800);
+		</script>
+	
+		<script>
+		/*particulas*/
+		const canvas = document.getElementById("particles");
+		const ctx = canvas.getContext("2d");
+		const isMobile = window.innerWidth < 600;
+
+		let particles = [];
+
+		function resizeCanvas() {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+		}
+
+		window.addEventListener("resize", resizeCanvas);
+		resizeCanvas();
+
+		function createParticles() {
+			particles = [];
+
+			for (let i = 0; i < (isMobile ? 30 : 80); i++) {
+				particles.push({
+					x: Math.random() * canvas.width,
+					y: Math.random() * canvas.height,
+
+					size: Math.random() * 2 + 0.5,
+
+					speedY: Math.random() * 0.4 + 0.1,
+					speedX: (Math.random() - 0.5) * 0.3,
+
+					opacity: Math.random() * 0.5 + 0.2,
+
+					glow: Math.random() * 15 + 5, // brilho
+					twinkle: Math.random() * 0.02 + 0.01 // piscar suave
+				});
+			}
+		}
+
+		function drawParticles() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			particles.forEach(p => {
+				// efeito brilho pulsante
+				p.opacity += p.twinkle;
+				if (p.opacity >= 0.8 || p.opacity <= 0.2) {
+					p.twinkle *= -1;
+				}
+
+				// glow (efeito premium)
+				const gradient = ctx.createRadialGradient(
+					p.x, p.y, 0,
+					p.x, p.y, p.glow
+				);
+
+				gradient.addColorStop(0, `rgba(255, 223, 120, ${p.opacity})`);
+				gradient.addColorStop(0.5, `rgba(212, 175, 55, ${p.opacity * 0.6})`);
+				gradient.addColorStop(1, `rgba(212, 175, 55, 0)`);
+
+				ctx.beginPath();
+				ctx.fillStyle = gradient;
+				ctx.arc(p.x, p.y, p.glow, 0, Math.PI * 2);
+				ctx.fill();
+
+				// movimento mais orgânico
+				p.y += p.speedY;
+				p.x += p.speedX;
+
+				// leve oscilação
+				p.x += Math.sin(p.y * 0.01) * 0.2;
+
+				// reset suave
+				if (p.y > canvas.height) {
+					p.y = 0;
+					p.x = Math.random() * canvas.width;
+				}
+			});
+
+			requestAnimationFrame(drawParticles);
+		}
+
+		createParticles();
+		drawParticles();
+		</script>	
+		
+</body>
+</html>
