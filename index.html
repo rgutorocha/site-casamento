@@ -434,7 +434,6 @@
             display: none;
 			position: fixed;
             inset: 0;
-            display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.45);
@@ -460,7 +459,6 @@
             display: none;
 			position: fixed;
             inset: 0;
-            display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.45);
@@ -1031,20 +1029,16 @@
 	function lockBodyScroll() {
 	    scrollY = window.scrollY;
 	
-	    document.body.style.overflow = "hidden";
+	    document.body.style.position = "fixed";
 	    document.body.style.top = `-${scrollY}px`;
-	    document.body.style.left = "0";
-	    document.body.style.right = "0";
 	    document.body.style.width = "100%";
 	}
 	
 	function unlockBodyScroll() {
-	    document.body.style.overflow = "";
+	    document.body.style.position = "";
 	    document.body.style.top = "";
-	    document.body.style.left = "";
-	    document.body.style.right = "";
 	    document.body.style.width = "";
-
+	
 	    window.scrollTo(0, scrollY);
 	}
         function trapFocusIn(container) {
@@ -1170,8 +1164,9 @@
 			feedbackBox.textContent = message;
 			feedbackBox.classList.add("visible");
 			setTimeout(() => {
-				feedbackBox.classList.remove("visible");
-			}, 3000);
+			    loader.classList.add("open");
+			    animateMonogram(); // inicia sincronizado
+			}, 800));
 		}
 
 		function openPixOverlay() {
@@ -1414,12 +1409,8 @@
 			}
 
 			carousel.addEventListener("touchstart", start);
-			carousel.addEventListener("touchmove", move);
-			carousel.addEventListener("touchend", end);
-			carousel.addEventListener("touchstart", () => clearInterval			(autoPlay));
-			carousel.addEventListener("touchend", startAutoPlay);
 			carousel.addEventListener("touchmove", move, { passive: true });
-			carousel.style.touchAction = "pan-y";
+			carousel.addEventListener("touchend", end);
 			
 
 			carousel.addEventListener("mousedown", start);
