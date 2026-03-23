@@ -554,12 +554,12 @@
 
 		/* CORTINAS */
 		.curtain {
-			position: absolute;
+			position: fixed;
 			top: 0;
 			width: 50%;
 			height: 100%;
 			background: linear-gradient(135deg, #C05A3E, #8F432E);
-			z-index: 2;
+			z-index: 9999;
 			transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
 		}
 
@@ -1472,6 +1472,7 @@
 				// animação do loader
 				setTimeout(() => {
 					loader.classList.add("open");
+					
 				}, 800);
 
 				setTimeout(() => {
@@ -1541,9 +1542,18 @@
 					requestAnimationFrame(animateMonogram);
 				}
 			}
+
+			function openCurtains() {
+			    const left = document.querySelector(".curtain-left");
+			    const right = document.querySelector(".curtain-right");
+			
+			    left.classList.add("open");
+			    right.classList.add("open");
+			}
 			
 			setTimeout(() => {
 				loader.classList.add("open");
+				openCurtains();
 				animateMonogram(); // inicia sincronizado
 			}, 800);
 		</script>
