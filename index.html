@@ -42,6 +42,7 @@
             line-height: 1.7;
 	   		height: 100%;
 			overflow-x: hidden;
+			overscroll-behavior: none;
         }
 
         body::before {
@@ -89,6 +90,8 @@
             border: none;
             backdrop-filter: blur(2px);
     	    -webkit-backdrop-filter: blur(2px);
+			position: relative;
+    		z-index: 1;
         }
 
         header {
@@ -222,33 +225,44 @@
 
 		#music-btn {
 		    position: fixed;
-		    bottom: 16px;
-		    right: 16px;
+		    bottom: 20px;
+		    right: 20px;
 		    z-index: 2000;
 		
-		    width: 48px;
-		    height: 48px;
+		    width: 52px;
+		    height: 52px;
 		    border-radius: 50%;
 		
 		    display: flex;
 		    align-items: center;
 		    justify-content: center;
 		
-		    font-size: 18px;
+		    font-size: 20px;
 		    padding: 0;
 		
 		    background: rgba(0,0,0,0.45);
-		    backdrop-filter: blur(10px);
+		    backdrop-filter: blur(8px);
 		
-		    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+		    color: white;
+		    border: none;
+		    cursor: pointer;
+		
+		    transition: transform 0.2s ease, background 0.2s ease;
 		}
 		
-		/* remove comportamento global no mobile */
+		#music-btn:hover {
+		    transform: scale(1.08);
+		    background: rgba(0,0,0,0.65);
+		}
+		
+		/* MOBILE: menor e mais discreto */
 		@media (max-width: 600px) {
 		    #music-btn {
 		        width: 44px;
 		        height: 44px;
 		        font-size: 16px;
+		        bottom: 14px;
+		        right: 14px;
 		    }
 		}
 
@@ -417,13 +431,14 @@
 
         /* Overlay RSVP fixo no centro da tela */
         .rsvp-overlay {
-            position: fixed;
-            inset: 0;
             display: none;
+			position: fixed;
+            inset: 0;
+            display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.45);
-            z-index: 1000;
+            z-index: 10000;
             padding: 16px;
 			overflow-y: auto;
         }
@@ -442,19 +457,21 @@
 
         /* Overlay PIX fixo no centro da tela */
         .pix-overlay {
-            position: fixed;
-            inset: 0;
             display: none;
+			position: fixed;
+            inset: 0;
+            display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.45);
-            z-index: 1200;
+            z-index: 10001;
             padding: 20px;
-	    max-height: 85vh;
+	  		max-height: 85vh;
+			overflow-y: auto;
         }
 
         .pix-box {
-            margin: 0;
+            margin: auto;
             padding: 18px 16px 20px;
             border-radius: 14px;
             background-color: rgba(247, 227, 206, 0.98);
@@ -1014,7 +1031,7 @@
 	function lockBodyScroll() {
 	    scrollY = window.scrollY;
 	
-	    document.body.style.position = "fixed";
+	    document.body.style.overflow = "hidden";
 	    document.body.style.top = `-${scrollY}px`;
 	    document.body.style.left = "0";
 	    document.body.style.right = "0";
@@ -1022,7 +1039,7 @@
 	}
 	
 	function unlockBodyScroll() {
-	    document.body.style.position = "";
+	    document.body.style.overflow = "";
 	    document.body.style.top = "";
 	    document.body.style.left = "";
 	    document.body.style.right = "";
@@ -1204,8 +1221,10 @@
 
 		closePixBtn.addEventListener("click", closePixOverlay);
 
-		pixOverlay.addEventListener("click", e => {
-			if (e.target === pixOverlay) closePixOverlay();
+		pixOverlay.addEventListener("click", (e) => {
+		    if (!pixBox.contains(e.target)) {
+		        closePixOverlay();
+		    }
 		});
 
 		document.addEventListener("keydown", e => {
@@ -1274,12 +1293,14 @@
         }
 
         if (rsvpOverlay) {
-            rsvpOverlay.addEventListener("click", e => {
-                if (e.target === rsvpOverlay) {
-                    closeRsvp();
-                }
-            });
-        }
+		    const content = rsvpOverlay.querySelector(".rsvp-modal-content");
+		
+		    rsvpOverlay.addEventListener("click", (e) => {
+		        if (!content.contains(e.target)) {
+		            closeRsvp();
+		        }
+		    });
+		}
 
         document.addEventListener("keydown", e => {
             if (
@@ -1502,16 +1523,17 @@
 
 				// botão de toggle
 				musicBtn.addEventListener("click", (e) => {
-					e.stopPropagation(); // não conflitar com o listener do body
-					if (!isPlaying) {
-						tryPlay();
-					} else {
-						music.pause();
-						isPlaying = false;
-						musicBtn.textContent = "Música";
-					}
+				    e.stopPropagation();
+				
+				    if (!isPlaying) {
+				        tryPlay();
+				        musicBtn.textContent = "🔊";
+				    } else {
+				        music.pause();
+				        isPlaying = false;
+				        musicBtn.textContent = "🎵";
+				    }
 				});
-			});
 			
 			const loader = document.getElementById("loader");
 
