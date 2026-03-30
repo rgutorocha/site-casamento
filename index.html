@@ -18,8 +18,6 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/21TKqTbk/file-0000000009a4720ea1a888801e454c23-1.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/21TKqTbk/file-0000000009a4720ea1a888801e454c23-1.png">
 	<link rel="apple-touch-icon" href="https://i.ibb.co/21TKqTbk/file-0000000009a4720ea1a888801e454c23-1.png">
-
-
 	
 	<style>
         :root {
@@ -469,8 +467,65 @@
 			transform: scale(1);
     		transition: transform 0.3s ease;
 			transform-origin: center center;
-			margin-bottom: 20px;
         }
+		
+		/* QR animado */
+		#pix-qr {
+			width: 220px;
+			margin-top: 12px;
+			border-radius: 8px;
+
+			opacity: 0;
+			transform: scale(0.8);
+			filter: blur(6px);
+			transition: all 0.4s ease;
+			transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+		}
+
+		/* quando ativo */
+		#pix-qr.show {
+			opacity: 1;
+			transform: scale(1);
+			filter: blur(0);
+			box-shadow: 
+				0 0 0 4px rgba(192, 90, 62, 0.15),
+				0 10px 30px rgba(0,0,0,0.25),
+				0 0 25px rgba(192, 90, 62, 0.35);
+		}
+
+		/* efeito extra (bounce leve) */
+		@keyframes qrPop {
+			0%   { transform: scale(0.8); }
+			60%  { transform: scale(1.05); }
+			100% { transform: scale(1); }
+		}
+		
+		#pix-qr.loading {
+			background: linear-gradient(
+				90deg,
+				#f0e0cc 25%,
+				#f7e3ce 50%,
+				#f0e0cc 75%
+			);
+			background-size: 200% 100%;
+			animation: shimmer 1.2s infinite;
+		}
+
+		#pix-qr::after {
+			content: "";
+			position: absolute;
+			inset: -6px;
+			border-radius: 12px;
+			background: linear-gradient(45deg, #C05A3E, #8F432E, #C05A3E);
+			z-index: -1;
+			opacity: 0.4;
+			filter: blur(10px);
+		}
+
+		@keyframes shimmer {
+			0% { background-position: 200% 0; }
+			100% { background-position: -200% 0; }
+		}
 		
 		/* BASE (funciona em qualquer tela) */
 		.carousel {
@@ -947,11 +1002,11 @@
                             <span id="pix-value"></span>
                         </p>
 
-                         <!-- <p style="margin-top: 12px;">
+                        <!--<p style="margin-top: 12px;">
                             <strong>Descrição para colocar no Pix:</strong>
-                        </p> -->
+                        </p>
                         <p id="pix-description"></p>
-                        <!-- <button
+                        <button
                             type="button"
                             class="btn btn-small"
                             id="copy-pix-desc"
@@ -987,7 +1042,6 @@
                     action="https://docs.google.com/forms/d/e/1FAIpQLSfx_dWDAWtCPOBqjjE7MCxHfyiqz_EriBlg1amzmyvdX3pA0A/formResponse"
                     method="POST"
                     target="_blank" rel="noopener noreferrer"
-					/* renanrgusto */
                 >
                     <div class="rsvp-field">
                         <label for="nome">Nome completo</label>
@@ -1117,10 +1171,10 @@
 		const pixBox         = document.getElementById("pix-box");
 		const pixKeySpan     = document.getElementById("pix-key");
 		const pixValueSpan   = document.getElementById("pix-value");
-		/* const pixDescSpan    = document.getElementById("pix-description"); */
+		
 		const closePixBtn    = document.getElementById("close-pix");
 		const copyPixKeyBtn  = document.getElementById("copy-pix-key");
-		const copyPixDescBtn = document.getElementById("copy-pix-desc");
+		
 		const feedbackBox    = document.getElementById("pix-feedback");
 
 		if (pixKeySpan) {
@@ -1173,7 +1227,26 @@
 
 			const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(payload)}`;
 
-			document.getElementById("pix-qr").src = qrUrl;
+			const qr = document.getElementById("pix-qr");
+
+			// estado inicial
+			qr.classList.remove("show");
+			qr.classList.add("loading");
+
+			// limpa src pra forçar reload
+			qr.src = "";
+
+			setTimeout(() => {
+				qr.src = qrUrl;
+			}, 150);
+
+			qr.onload = () => {
+				qr.classList.remove("loading");
+
+				requestAnimationFrame(() => {
+					qr.classList.add("show");
+				});
+			};
 		}
 		/*fim scripr qr*/
 		
@@ -1221,8 +1294,8 @@
 						`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
 				}
 
-				 const description = `Presente: ${giftName} - Renan & Carol`;
-				pixDescSpan.textContent = description; 
+				const description = `Presente: ${giftName} - Renan & Carol`;
+				
 
 				generatePixQR(value === "livre" ? "0.00" : value);
 
@@ -1236,11 +1309,6 @@
 			navigator.clipboard.writeText(PIX_KEY)
 				.then(() => showFeedback("Chave copiada!"));
 		});
-
-		/* copyPixDescBtn.addEventListener("click", () => {
-			navigator.clipboard.writeText(pixDescSpan.textContent)
-				.then(() => showFeedback("Descrição copiada!"));
-		}); */
 
 		closePixBtn.addEventListener("click", closePixOverlay);
 
