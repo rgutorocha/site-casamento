@@ -820,7 +820,7 @@
                             type="button"
                             class="btn btn-gift"
                             data-gift="Presente com valor livre"
-                            data-value="livre"
+                            data-value="0,00"
                         >
                             Presentear via Pix
                         </button>
@@ -945,7 +945,7 @@
                             <span id="pix-value"></span>
                         </p>
 
-                        <p style="margin-top: 12px;">
+                         /* <p style="margin-top: 12px;">
                             <strong>Descrição para colocar no Pix:</strong>
                         </p>
                         <p id="pix-description"></p>
@@ -955,7 +955,7 @@
                             id="copy-pix-desc"
                         >
                             Copiar descrição
-                        </button>
+                        </button> */
 
                         <div
                             id="pix-feedback"
@@ -985,6 +985,7 @@
                     action="https://docs.google.com/forms/d/e/1FAIpQLSfx_dWDAWtCPOBqjjE7MCxHfyiqz_EriBlg1amzmyvdX3pA0A/formResponse"
                     method="POST"
                     target="_blank" rel="noopener noreferrer"
+					/* renanrgusto */
                 >
                     <div class="rsvp-field">
                         <label for="nome">Nome completo</label>
@@ -1114,7 +1115,7 @@
 		const pixBox         = document.getElementById("pix-box");
 		const pixKeySpan     = document.getElementById("pix-key");
 		const pixValueSpan   = document.getElementById("pix-value");
-		const pixDescSpan    = document.getElementById("pix-description");
+		/* const pixDescSpan    = document.getElementById("pix-description"); */
 		const closePixBtn    = document.getElementById("close-pix");
 		const copyPixKeyBtn  = document.getElementById("copy-pix-key");
 		const copyPixDescBtn = document.getElementById("copy-pix-desc");
@@ -1218,8 +1219,8 @@
 						`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
 				}
 
-				const description = `Presente: ${giftName} - Renan & Carol`;
-				pixDescSpan.textContent = description;
+				 /*const description = `Presente: ${giftName} - Renan & Carol`;
+				pixDescSpan.textContent = description; */
 
 				generatePixQR(value === "livre" ? "0.00" : value);
 
