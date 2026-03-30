@@ -1200,26 +1200,30 @@
 		}
 
 		function generatePixPayload(valor) {
-			const chave = "rgutorocha@gmail.com";
-			const nome = "RENAN ROCHA";
-			const cidade = "RIO DE JANEIRO";
-
-			let payload =
-				format("00", "01") +
-				format("26",
-					format("00", "BR.GOV.BCB.PIX") +
-					format("01", chave)
-				) +
-				format("52", "0000") +
-				format("53", "986") +
-				(valor !== "0.00" ? format("54", valor) : "") +
-				format("58", "BR") +
-				format("59", nome.substring(0, 25)) +
-				format("60", cidade.substring(0, 15)) +
-				"6304";
-
-			const crc = crc16(payload);
-			return payload + crc;
+		    const chave = "rgutorocha@gmail.com";
+		    const nome = "RENAN ROCHA";
+		    const cidade = "RIO DE JANEIRO";
+		
+		    let payload =
+		        format("00", "01") +
+		        format("26",
+		            format("00", "BR.GOV.BCB.PIX") +
+		            format("01", chave)
+		        ) +
+		        format("52", "0000") +
+		        format("53", "986") +
+		        (valor !== "0.00" ? format("54", valor) : "") +
+		        format("58", "BR") +
+		        format("59", nome.substring(0, 25)) +
+		        format("60", cidade.substring(0, 15)) +
+		        
+		        // 🔥 ESSENCIAL (adicione isso)
+		        format("62", format("05", "***")) +
+		
+		        "6304";
+		
+		    const crc = crc16(payload);
+		    return payload + crc;
 		}
 
 		function generatePixQR(value) {
@@ -1545,6 +1549,8 @@
 				const loader    = document.getElementById("loader");
 				const music     = document.getElementById("music");
 				const musicBtn  = document.getElementById("music-btn");
+
+				music.volume = 0.15;
 
 				// animação do loader
 				setTimeout(() => {
