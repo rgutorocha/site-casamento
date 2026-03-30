@@ -130,11 +130,41 @@
             font-size: clamp(1.2rem, 2.5vw, 1.6rem);
         }
 
-		header contato{
-			align: center;
-			sixe: 150;
+		.contato {
+			display: flex;
+			gap: 12px; 
+			justify-content: center; 
+			align-items: center;
 			
 		}
+
+		.contato img {
+			width: 150px; 
+			height: auto;
+			display: block;
+			filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
+ 		   transition: transform 0.25s ease, filter 0.25s ease;
+		}
+		
+		@media (hover: hover) {
+			.contato img:hover {
+				transform: translateY(-3px);
+				filter: 
+					brightness(0.8)
+					contrast(1.05)
+					drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+			}
+		}
+
+		/* efeito para touch */
+		.contato img:active {
+			transform: scale(0.95);
+
+			filter: 
+				brightness(0.7)
+				drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+		}
+		
         .hero {
             background: linear-gradient(
                 to bottom,
@@ -183,8 +213,8 @@
         .section#detalhes {
             background-color: rgba(255, 252, 248, 0.78);
         }
-
-        .section#rsvp {
+		
+		.section#rsvp {
             background-color: rgba(253, 245, 236, 0.82);
         }
 
@@ -766,11 +796,44 @@
 
             .section {
                 padding: 50px 80px;
-            }
-			
-			
-			
+            }	
         }
+		
+		.map-wrapper {
+			width: 100%;
+			height: 320px;
+			border-radius: 16px;
+			overflow: hidden;
+
+			box-shadow: 
+				0 12px 28px rgba(0,0,0,0.18),
+				0 0 0 4px rgba(192, 90, 62, 0.08);
+
+			position: relative;
+		}
+
+		.map-wrapper iframe {
+			width: 100%;
+			height: 100%;
+			border: 0;
+
+			/* efeito leve para combinar com o tema */
+			filter: sepia(0.25) saturate(0.9) contrast(0.95);
+		}
+		
+		.map-wrapper::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+
+			background: linear-gradient(
+				rgba(192, 90, 62, 0.08),
+				rgba(247, 227, 206, 0.2)
+			);
+
+			pointer-events: none;
+		}
+		
     </style>
 </head>
 <body>
@@ -854,6 +917,16 @@
                 <p>Cerimônia às 15h, seguida de recepção.</p>
                 <p>Endereço: Rua Guilhermina, 251 – Piedade, Rio de Janeiro/RJ</p>
                 <p style="font-size: 1rem; opacity: 0.85;">Obs.: O casamento será no Rio de Janeiro (RJ).</p>
+				<div class="map-wrapper">
+				  <iframe
+					src="https://www.google.com/maps?q=Rua+Guilhermina+251+Piedade+Rio+de+Janeiro&output=embed"
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade">
+				  </iframe>
+				</div>
+				<a href="https://maps.google.com/?q=Rua+Guilhermina+251+Piedade+Rio+de+Janeiro" target="_blank" class="btn">
+					Abrir no Google Maps 📍
+				</a>
             </div>
         </section>
 
@@ -1725,6 +1798,7 @@
 		createParticles();
 		drawParticles();
 		</script>	
+		
 		
 </body>
 </html>
