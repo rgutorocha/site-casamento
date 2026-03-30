@@ -494,7 +494,6 @@
             background-color: rgba(247, 227, 206, 0.98);
             border: none;
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
-            text-align: left;
             max-width: clamp(320px, 80vw, 700px);
             width: 100%;
             max-height: 90vh;
@@ -502,7 +501,16 @@
 			transform: scale(1);
     		transition: transform 0.3s ease;
 			transform-origin: center center;
+			
+			 
         }
+		
+		.dados{
+			 display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
 		
 		/* QR animado */
 		#pix-qr {
@@ -515,6 +523,7 @@
 			filter: blur(6px);
 			transition: all 0.4s ease;
 			transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+			align-content: center;
 		}
 
 		/* quando ativo */
@@ -555,6 +564,7 @@
 			z-index: -1;
 			opacity: 0.4;
 			filter: blur(10px);
+			
 		}
 
 		@keyframes shimmer {
@@ -924,9 +934,7 @@
 					referrerpolicy="no-referrer-when-downgrade">
 				  </iframe>
 				</div>
-				<a href="https://maps.google.com/?q=Rua+Guilhermina+251+Piedade+Rio+de+Janeiro" target="_blank" class="btn">
-					Abrir no Google Maps 📍
-				</a>
+				
             </div>
         </section>
 
@@ -1072,51 +1080,54 @@
                 <div id="pix-overlay" class="pix-overlay" aria-hidden="true">
                     <div id="pix-box" class="pix-box" role="dialog" aria-modal="true">
                         <h3>Dados para presente via Pix</h3>
-                        <p>
-                            <strong>Chave Pix:</strong>
-                            <span id="pix-key">rgutorocha@gmail.com</span>
-							<img id="pix-qr" style="width:220px; margin-top:12px; border-radius:8px;" />
-                        </p>
-                        <button
-                            type="button"
-                            class="btn btn-small"
-                            id="copy-pix-key"
-                        >
-                            Copiar chave Pix
-                        </button>
+                        <div class = "dados">
+							<p>
+								<strong>Chave Pix:</strong>
+								<span id="pix-key">rgutorocha@gmail.com</span>							
+							</p>
+							<img id="pix-qr" />
+							<p><button
+								type="button"
+								class="btn btn-small"
+								id="copy-pix-key"
+								>
+								Copiar chave Pix
+							</button>
+							</p>
 
-                        <p style="margin-top: 12px;">
-                            <strong>Valor sugerido:</strong>
-                            <span id="pix-value"></span>
-                        </p>
+							<p style="margin-top: 12px;">
+								<strong>Valor sugerido:</strong>
+								<span id="pix-value"></span>
+							</p>
 
-                        <!--<p style="margin-top: 12px;">
-                            <strong>Descrição para colocar no Pix:</strong>
-                        </p>
-                        <p id="pix-description"></p>
-                        <button
-                            type="button"
-                            class="btn btn-small"
-                            id="copy-pix-desc"
-                        >
-                            Copiar descrição
-                        </button> -->
+							<!--<p style="margin-top: 12px;">
+								<strong>Descrição para colocar no Pix:</strong>
+							</p>
+							<p id="pix-description"></p>
+							<button
+								type="button"
+								class="btn btn-small"
+								id="copy-pix-desc"
+							>
+								Copiar descrição
+							</button> -->
 
-                        <div
-                            id="pix-feedback"
-                            class="pix-feedback"
-                            aria-live="polite"
-                        ></div>
+							<div
+								id="pix-feedback"
+								class="pix-feedback"
+								aria-live="polite"
+							></div>
 
-                        <button
-                            type="button"
-                            class="btn btn-small"
-                            id="close-pix"
-                            style="margin-top: 16px;"
-                        >
-                            Fechar
-                        </button>
-                    </div>
+							<button
+								type="button"
+								class="btn btn-small"
+								id="close-pix"
+								style="margin-top: 16px;"
+							>
+								Fechar
+							</button>
+						</div>
+					</div>
                 </div>
 		<!-- OVERLAY RSVP flutuante -->
         <div id="rsvp-overlay" class="rsvp-overlay" aria-hidden="true">
@@ -1157,8 +1168,8 @@
                         <button
                             type="button"
                             id="rsvp-close"
-                            class="btn btn-small"
-                            style="flex:1; background-color:rgba(143,67,46,0.85);"
+                            class="btn"
+                            
                         >
                             Fechar
                         </button>
