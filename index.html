@@ -1221,8 +1221,8 @@
 						`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
 				}
 
-				 /*const description = `Presente: ${giftName} - Renan & Carol`;
-				pixDescSpan.textContent = description; */
+				 const description = `Presente: ${giftName} - Renan & Carol`;
+				pixDescSpan.textContent = description; 
 
 				generatePixQR(value === "livre" ? "0.00" : value);
 
